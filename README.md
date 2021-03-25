@@ -6,5 +6,6 @@ Design a Twitter-like social network website for making posts and following user
     // let's start here
     // begin with the understanding section:
     // https://cs50.harvard.edu/web/2020/projects/4/network/#understanding
+    // wrapping my head around it
 
     - The screenshot at the top of this specification shows the “New Post” box at the top of the “All Posts” page. You may choose to do this as well, or you may make the “New Post” feature a separate page.
