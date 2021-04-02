@@ -26,4 +26,5 @@ Design a Twitter-like social network website for making posts and following user
     - Using JavaScript, you should asynchronously let the server know to update the like count (as via a call to fetch) and then update the post’s like count displayed on the page, without requiring a reload of the entire page.
 
 Idea for likes: 
-- create a model to store likes: userID-postID
+- many-to-many: create a third model to store likes: userID-postID
+- add a "likes" field that will store userUDs in as SET type
