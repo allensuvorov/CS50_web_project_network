@@ -28,3 +28,5 @@ Design a Twitter-like social network website for making posts and following user
 Idea for likes: 
 - many-to-many: create a third model to store likes: userID-postID
 - add a "likes" field that will store userUDs in as SET type
+- Khabibs instagram account probably has a billion likes. 
+- He has 4K posts, each with about 0.5 million likes.
