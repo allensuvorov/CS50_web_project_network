@@ -30,3 +30,4 @@ Idea for likes:
 - add a "likes" field that will store userUDs in as SET type
 - Khabibs instagram account probably has a billion likes. 
 - He has 4K posts, each with about 0.5 million likes.
+- study this: https://docs.djangoproject.com/en/3.1/ref/validators/#validate-comma-separated-integer-list
