@@ -31,3 +31,5 @@ Idea for likes:
 - Khabibs instagram account probably has a billion likes. 
 - He has 4K posts, each with about 0.5 million likes.
 - study this: https://docs.djangoproject.com/en/3.1/ref/validators/#validate-comma-separated-integer-list
+- storing will be with dote with many-to-many,
+- will use likes counter for every post  
