@@ -32,4 +32,9 @@ Idea for likes:
 - He has 4K posts, each with about 0.5 million likes.
 - study this: https://docs.djangoproject.com/en/3.1/ref/validators/#validate-comma-separated-integer-list
 - storing will be with dote with many-to-many,
-- will use likes counter for every post  
+- will use likes counter for every post
+
+Next step:
+- new post
+- how to check it user is signed in?
+- create the “New Post” box at the top of the “All Posts” page
