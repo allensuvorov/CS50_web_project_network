@@ -38,3 +38,5 @@ Next step:
 - new post
 - how to check it user is signed in?
 - create the “New Post” box at the top of the “All Posts” page
+- https://docs.djangoproject.com/en/3.1/topics/auth/default/
+- first step create super user
