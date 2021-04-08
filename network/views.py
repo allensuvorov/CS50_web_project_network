@@ -8,8 +8,12 @@ from .models import User
 
 
 def index(request):
-    return render(request, "network/index.html")
-
+    # if user is not authenticated than show index page with login and register links
+    if not request.user.is_authenticated:
+        return render(request, "network/index.html", {"message": "Welcome to Network, please register or login"})
+    
+    # else show user page
+    return render(request, "network/index.html", {"message": "new post box will be here!"})
 
 def login_view(request):
     if request.method == "POST":
