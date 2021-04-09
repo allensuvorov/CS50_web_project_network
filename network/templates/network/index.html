@@ -1,6 +1,12 @@
 {% extends "network/layout.html" %}
 
 {% block body %}
+
+    {% if user.is_authenticated %}
+        <h1> 
+            All Posts
+        </h1>
+    {% endif %}
     {{message}}
     {% comment %} TODO {% endcomment %}
 {% endblock %}

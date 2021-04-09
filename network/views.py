@@ -3,6 +3,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django import forms
 
 from .models import User
 
@@ -13,7 +14,10 @@ def index(request):
         return render(request, "network/index.html", {"message": "Welcome to Network, please register or login"})
     
     # else show user page
-    return render(request, "network/index.html", {"message": "new post box will be here!"})
+    context = {
+        "message": "new post box will be here!"
+    }
+    return render(request, "network/index.html", context)
 
 def login_view(request):
     if request.method == "POST":
