@@ -6,7 +6,10 @@
         <h1> 
             All Posts
         </h1>
+        {{ newpostform }}
     {% endif %}
-    {{message}}
-    {% comment %} TODO {% endcomment %}
+    <br>
+    <input class="btn btn-outline-primary" type="submit" value="New Post">
+    {% comment %} {{message}} {% endcomment %}
+
 {% endblock %}

@@ -7,6 +7,15 @@ from django import forms
 
 from .models import User
 
+class NewPostForm(forms.Form):
+    newpost = forms.CharField(
+        widget = forms.Textarea(attrs={
+            'title': 'New post',
+            'size': '30',
+            'class': 'form-control',
+            'placeholder': 'Type New Post Text'
+        })
+    )
 
 def index(request):
     # if user is not authenticated than show index page with login and register links
@@ -15,7 +24,8 @@ def index(request):
     
     # else show user page
     context = {
-        "message": "new post box will be here!"
+        "message": "new post box will be here!",
+        "newpostform": NewPostForm()
     }
     return render(request, "network/index.html", context)
 
