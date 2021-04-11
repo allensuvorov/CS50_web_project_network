@@ -81,3 +81,4 @@ def register(request):
         return render(request, "network/register.html")
 
 # def new_post(request):
+# add post to DB
