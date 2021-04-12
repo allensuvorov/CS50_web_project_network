@@ -6,3 +6,6 @@ class User(AbstractUser):
     pass
 
 # class Post():
+# field text
+# field likes counter
+# field users M2M
