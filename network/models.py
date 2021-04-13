@@ -9,3 +9,9 @@ class User(AbstractUser):
 # field text
 # field likes counter
 # field users M2M
+
+# class Post(models.Model):
+    # text = models.CharField(max_length=100)
+
+    # def __str__(self):
+        # return f"{self.text}"
