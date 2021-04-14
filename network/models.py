@@ -12,6 +12,7 @@ class User(AbstractUser):
 
 # class Post(models.Model):
     # text = models.CharField(max_length=100)
+    # likes = models.PositiveIntegerField()
 
     # def __str__(self):
         # return f"{self.text}"
