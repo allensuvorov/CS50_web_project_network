@@ -5,14 +5,9 @@ from django.db import models
 class User(AbstractUser):
     pass
 
-# class Post():
-# field text
-# field likes counter
-# field users M2M
-
 # class Post(models.Model):
-    # text = models.CharField(max_length=100)
-    # likes = models.PositiveIntegerField()
-
-    # def __str__(self):
-        # return f"{self.text}"
+#     text = models.CharField(max_length=100)
+#     likes_count = models.PositiveIntegerField()
+#     likes_users = models.ManyToManyField(User, blank=True)
+#     def __str__(self):
+#         return f"{self.text}"
