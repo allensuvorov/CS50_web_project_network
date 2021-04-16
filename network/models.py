@@ -4,6 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     pass
+# user: following (other users)
 
 # class Post(models.Model):
 #     text = models.CharField(max_length=100)
