@@ -4,7 +4,10 @@ from django.db import models
 
 class User(AbstractUser):
     pass
-# user: following (other users)
+    # following = models.ManyToManyField(User, blank=true)
+    # def __str__(self):
+    #     return f"User {self.name}"
+    
 # posts: posts of that user 
 
 # class Post(models.Model):
