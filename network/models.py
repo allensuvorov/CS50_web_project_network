@@ -4,7 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     # pass
-    following = models.ManyToManyField(User, blank=true) # how to avoid following yourself
+    following = models.ManyToManyField('self', on_delete=models.CASCADE, blank=True) # how to avoid following yourself
     def __str__(self):
         return f"{self.name}"
 
