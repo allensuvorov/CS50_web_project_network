@@ -6,7 +6,7 @@ class User(AbstractUser):
     # pass
     following = models.ManyToManyField(User, blank=true) # how to avoid following yourself
     def __str__(self):
-        return f"User {self.name}"
+        return f"{self.name}"
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
