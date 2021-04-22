@@ -5,6 +5,7 @@ from django.db import models
 class User(AbstractUser):
     # pass
     following = models.ManyToManyField('self', on_delete=models.CASCADE, blank=True) # how to avoid following yourself
+    # TypeError: __init__() got an unexpected keyword argument 'on_delete'
     def __str__(self):
         return f"{self.name}"
 
