@@ -25,18 +25,8 @@ Design a Twitter-like social network website for making posts and following user
 * **“Like” and “Unlike”:** Users should be able to click a button or link on any post to toggle whether or not they “like” that post.
     - Using JavaScript, you should asynchronously let the server know to update the like count (as via a call to fetch) and then update the post’s like count displayed on the page, without requiring a reload of the entire page.
 
-Idea for likes: 
-- many-to-many: create a third model to store likes: userID-postID
-- add a "likes" field that will store userUDs in as SET type
-- Khabibs instagram account probably has a billion likes. 
-- He has 4K posts, each with about 0.5 million likes.
-- study this: https://docs.djangoproject.com/en/3.1/ref/validators/#validate-comma-separated-integer-list
-- storing will be with dote with many-to-many,
-- will use likes counter for every post
+Idea: 
 
 Next step:
-- new post
-- how to check it user is signed in?
-- create the “New Post” box at the top of the “All Posts” page
-- https://docs.djangoproject.com/en/3.1/topics/auth/default/
-- first step create super user
+- use AJAX to do newpost
+- create javascript file
