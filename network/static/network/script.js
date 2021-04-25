@@ -1,0 +1,1 @@
+// here will start script
