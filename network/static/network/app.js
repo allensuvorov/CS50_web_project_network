@@ -2,6 +2,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("page loaded");
 
-    document.getElementById('id_newpost').onsubmit = console.log("button pushed"); 
+    function onClick (){
+        console.log("submit button pushed")
+    }
+    document.querySelector('input').onclick = onClick;
     // why is it fired without button push?
     });
