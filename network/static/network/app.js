@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function onClick (){
         console.log("submit button pushed")
+        // here we will send form input to the server via an ajax POST request, refer to project Pizza  
     }
     document.querySelector('input').onclick = onClick;
-    // why is it fired without button push?
     });
