@@ -28,5 +28,5 @@ Design a Twitter-like social network website for making posts and following user
 Idea: 
 
 Next step:
-- use AJAX to do newpost
-- create javascript file
+- let's do newpost without fetch, direct html - to server
+
