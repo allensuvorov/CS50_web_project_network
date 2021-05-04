@@ -29,4 +29,4 @@ Idea:
 
 Next step:
 - let's do newpost without fetch, direct html - to server
-
+- to do that - add link to the button so that it calls a server function and passes the text of the post
