@@ -6,9 +6,13 @@
         <h1> 
             All Posts
         </h1>
-        {{ newpostform }}
-        <br>
-        <input class="btn btn-outline-primary" type="submit" value="Submit">
+        <form action="newpost" method="post">
+            {% csrf_token %}
+            {{ newpostform }}
+
+            <br>
+            <input class="btn btn-outline-primary" type="submit" value="Submit">
+        </form>
     {% endif %}
     
     {% comment %} {{message}} {% endcomment %}
