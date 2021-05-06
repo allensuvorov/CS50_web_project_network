@@ -80,5 +80,7 @@ def register(request):
     else:
         return render(request, "network/register.html")
 
-# def new_post(request):
+def new_post(request):
+    print("\n newpost \n")
 # add post to DB
+    return HttpResponseRedirect(reverse("index"))
