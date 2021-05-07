@@ -82,5 +82,8 @@ def register(request):
 
 def new_post(request):
     print("\n newpost \n")
-# add post to DB
+    
+    # if request.method == "POST":
+    # add post to DB
+
     return HttpResponseRedirect(reverse("index"))
