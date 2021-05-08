@@ -84,6 +84,7 @@ def new_post(request):
     print("\n newpost \n")
     
     # if request.method == "POST":
+        # form = NewPostForm(request.POST) # grab form data (user input)
     # add post to DB
 
     return HttpResponseRedirect(reverse("index"))
