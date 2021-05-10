@@ -86,6 +86,8 @@ def new_post(request):
     if request.method == "POST":
         form = NewPostForm(request.POST) # grab form data (user input)
         if form.is_valid():
+            text = form.cleaned_data["newpost"]
+            print("\n" + text + "\n")
             
     # add post to DB
 
