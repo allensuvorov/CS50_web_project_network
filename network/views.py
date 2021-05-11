@@ -87,8 +87,8 @@ def new_post(request):
         form = NewPostForm(request.POST) # grab form data (user input)
         if form.is_valid():
             text = form.cleaned_data["newpost"]
-            print("\n" + text + "\n")
-            
+            print("\n " + text + " \n")
+            # https://docs.djangoproject.com/en/3.2/topics/db/queries/
     # add post to DB
 
     return HttpResponseRedirect(reverse("index"))
