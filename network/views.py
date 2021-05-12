@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django import forms
 
-from .models import User
+from .models import User, Post
 
 class NewPostForm(forms.Form):
     newpost = forms.CharField(
@@ -87,6 +87,8 @@ def new_post(request):
         form = NewPostForm(request.POST) # grab form data (user input)
         if form.is_valid():
             text = form.cleaned_data["newpost"]
+            # post = Post(author=)
+            
             print("\n " + text + " \n")
             # https://docs.djangoproject.com/en/3.2/topics/db/queries/
     # add post to DB
