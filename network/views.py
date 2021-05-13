@@ -86,11 +86,17 @@ def new_post(request):
     if request.method == "POST":
         form = NewPostForm(request.POST) # grab form data (user input)
         if form.is_valid():
-            text = form.cleaned_data["newpost"]
-            # post = Post(author=)
-            
             print("\n " + text + " \n")
+            
+            text = form.cleaned_data["newpost"]
+            
+            # add post to DB
+            post = Post(
+                author = request.user,
+                text = text,
+                )
+            post.save()
+            
             # https://docs.djangoproject.com/en/3.2/topics/db/queries/
-    # add post to DB
 
     return HttpResponseRedirect(reverse("index"))
