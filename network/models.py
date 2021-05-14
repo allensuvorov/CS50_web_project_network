@@ -9,7 +9,7 @@ class User(AbstractUser):
         return f"{self.name}"
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts") # authors? really?
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     text = models.CharField(max_length=100)
     likes_count = models.PositiveIntegerField() # stores the number of likes for this post
     likes_users = models.ManyToManyField(User, blank=True) # this table stores pairs User:Post
