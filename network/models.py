@@ -6,7 +6,7 @@ class User(AbstractUser):
     # pass
     following = models.ManyToManyField('self', blank=True, related_name="followers") # how to avoid following yourself
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.username}"
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
@@ -16,4 +16,4 @@ class Post(models.Model):
     date_time = models.DateTimeField(auto_now=False, auto_now_add=True) 
     # the date and time at which the post was made
     def __str__(self):
-        return f"{self.text}"
+        return f"{self.author}, {self.text}, {self.date_time}"

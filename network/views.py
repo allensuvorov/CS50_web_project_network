@@ -23,11 +23,11 @@ def index(request):
         return render(request, "network/index.html", {"message": "Welcome to Network, please register or login"})
     
     # else show user page
-    posts = {}
+    user_posts = {}
     if Post.objects.filter(author=request.user).exists():
-        posts = Post.objects.get(author=request.user)
+        user_posts = Post.objects.filter(author=request.user)
     context = {
-        "message": posts,
+        "message": user_posts,
         "newpostform": NewPostForm()
     }
     return render(request, "network/index.html", context)
