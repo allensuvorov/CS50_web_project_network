@@ -23,8 +23,11 @@ def index(request):
         return render(request, "network/index.html", {"message": "Welcome to Network, please register or login"})
     
     # else show user page
+    posts = {}
+    if Post.objects.filter(author=request.user).exists():
+        posts = Post.objects.get(author=request.user)
     context = {
-        "message": "new post box will be here!",
+        "message": posts,
         "newpostform": NewPostForm()
     }
     return render(request, "network/index.html", context)
@@ -86,9 +89,9 @@ def new_post(request):
     if request.method == "POST":
         form = NewPostForm(request.POST) # grab form data (user input)
         if form.is_valid():
-            print("\n " + text + " \n")
             
             text = form.cleaned_data["newpost"]
+            print("\n " + text + " \n")
             
             # add post to DB
             post = Post(
