@@ -23,13 +23,20 @@ def index(request):
         return render(request, "network/index.html", {"message": "Welcome to Network, please register or login"})
     
     # else show user page
-    user_posts = {}
-    if Post.objects.filter(author=request.user).exists():
-        user_posts = Post.objects.filter(author=request.user)
-    context = {
-        "message": user_posts,
-        "newpostform": NewPostForm()
-    }
+
+    context = {"newpostform": NewPostForm()}
+    
+    if Post.objects.all().exists():
+        context["all_posts"]=Post.objects.all()
+
+    # all_posts = {}
+    # if Post.objects.all().exists():
+    #     all_posts=Post.objects.all()
+
+    # context = {
+    #     "newpostform": NewPostForm(),
+    #     "all_posts": all_posts
+    # }
     return render(request, "network/index.html", context)
 
 def login_view(request):
@@ -99,7 +106,10 @@ def new_post(request):
                 text = text,
                 )
             post.save()
-            
-            # https://docs.djangoproject.com/en/3.2/topics/db/queries/
 
     return HttpResponseRedirect(reverse("index"))
+
+# def user_page(request):
+    # user_posts = {}
+    # if Post.objects.filter(author=request.user).exists():
+    #     user_posts = Post.objects.filter(author=request.user)

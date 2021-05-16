@@ -16,4 +16,4 @@ class Post(models.Model):
     date_time = models.DateTimeField(auto_now=False, auto_now_add=True) 
     # the date and time at which the post was made
     def __str__(self):
-        return f"{self.author}, {self.text}, {self.date_time}"
+        return f"{self.author}, {self.text}, {self.date_time}, {self.likes_count}"
