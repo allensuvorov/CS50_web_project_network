@@ -15,7 +15,11 @@
         </form>
     {% endif %}
     <br>
-    {{all_posts}}
+    
+    {% for post in all_posts %}
+        <li>{{post}}</li>
+    {% endfor %}
+    
     {{message}}
 
 {% endblock %}
