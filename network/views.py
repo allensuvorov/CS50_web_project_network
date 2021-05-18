@@ -24,19 +24,20 @@ def index(request):
     
     # else show user page
 
-    context = {"newpostform": NewPostForm()}
+    # context = {"newpostform": NewPostForm()}
     
-    if Post.objects.all().exists():
-        context["all_posts"]=Post.objects.all()
-
-    # all_posts = {}
     # if Post.objects.all().exists():
-    #     all_posts=Post.objects.all()
+    #     context["all_posts"]=Post.objects.all()
+    #     print(context["all_posts"])
+    
+    all_posts = []
+    if Post.objects.all().exists():
+        all_posts=Post.objects.all().order_by("-date_time")
 
-    # context = {
-    #     "newpostform": NewPostForm(),
-    #     "all_posts": all_posts
-    # }
+    context = {
+        "newpostform": NewPostForm(),
+        "all_posts": all_posts
+    }
     return render(request, "network/index.html", context)
 
 def login_view(request):
