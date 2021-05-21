@@ -16,7 +16,4 @@ class Post(models.Model):
     date_time = models.DateTimeField(auto_now=False, auto_now_add=True) 
     # the date and time at which the post was made
     def __str__(self):
-        # likes = self.likes_count
-        # if self.likes_count is None:
-        #     likes = 0
-        return f"USER: {self.author}, POST: {self.text}, {self.date_time}, LIKES: {self.likes_count}"
+        return f"USER: {self.author}, POST: {self.text}, {self.date_time.strftime('%d-%m-%Y %H:%M:%S')}, LIKES: {self.likes_count}"
