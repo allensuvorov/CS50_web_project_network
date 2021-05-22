@@ -59,11 +59,9 @@ def login_view(request):
     else:
         return render(request, "network/login.html")
 
-
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
-
 
 def register(request):
     if request.method == "POST":
@@ -110,7 +108,12 @@ def new_post(request):
 
     return HttpResponseRedirect(reverse("index"))
 
-# def user_page(request):
-    # user_posts = {}
-    # if Post.objects.filter(author=request.user).exists():
-    #     user_posts = Post.objects.filter(author=request.user)
+def profile(request):
+
+    user_posts = {}
+    if Post.objects.filter(author=request.user).exists():
+        user_posts = Post.objects.filter(author=request.user)
+    context = {
+        "user_posts": user_posts
+    }
+    return render(request, "network/profile.html", context)

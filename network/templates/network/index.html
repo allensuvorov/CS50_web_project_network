@@ -13,12 +13,12 @@
             <br>
             <input class="btn btn-outline-primary" type="submit" value="Submit">
         </form>
+        <br>
+        
+        {% for post in all_posts %}
+            <li>{{post}}</li>
+        {% endfor %}
     {% endif %}
-    <br>
-    
-    {% for post in all_posts %}
-        <li>{{post}}</li>
-    {% endfor %}
     
     {{message}}
 
