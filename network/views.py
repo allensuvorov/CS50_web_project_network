@@ -113,7 +113,10 @@ def profile(request):
     user_posts = {}
     if Post.objects.filter(author=request.user).exists():
         user_posts = Post.objects.filter(author=request.user)
+    user = User.objects.get(username = request.user)
+    print(user)
     context = {
-        "user_posts": user_posts
+        "user_posts": user_posts,
+        "followers": user
     }
     return render(request, "network/profile.html", context)
