@@ -115,13 +115,12 @@ def profile(request):
         user_posts = Post.objects.filter(author=request.user)
     
     # get number of followers of user
-    print(request.user)
-    # user = User.objects.get(username = request.user)
-    # print(user)
+    print(request.user.following.count())
 
 
     context = {
         "user_posts": user_posts,
-        "followers": "number of followers"
+        "following": request.user.following.count(),
+        # "followers": request.user.followers.count()
     }
     return render(request, "network/profile.html", context)
