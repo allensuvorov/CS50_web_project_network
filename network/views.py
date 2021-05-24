@@ -109,14 +109,19 @@ def new_post(request):
     return HttpResponseRedirect(reverse("index"))
 
 def profile(request):
-
+    # get user posts from DB
     user_posts = {}
     if Post.objects.filter(author=request.user).exists():
         user_posts = Post.objects.filter(author=request.user)
-    user = User.objects.get(username = request.user)
-    print(user)
+    
+    # get number of followers of user
+    print(request.user)
+    # user = User.objects.get(username = request.user)
+    # print(user)
+
+
     context = {
         "user_posts": user_posts,
-        "followers": user
+        "followers": "number of followers"
     }
     return render(request, "network/profile.html", context)

@@ -6,7 +6,15 @@ class User(AbstractUser):
     # pass
     following = models.ManyToManyField('self', blank=True, related_name="followers") # how to avoid following yourself
     def __str__(self):
-        return f"{self.username}"
+        # print ("str of User")
+        # print (self.following)
+
+        following = self.following
+        
+        if self.following is None:
+            following = 0
+            print ("zero followers")
+        return f"USER: {self.username}, Following: {following}"
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")

@@ -6,13 +6,19 @@
         <h1> 
             Profile
         </h1>
-        <br>
-    
+
+        <h2> User Data </h2>
+        <ul>
+            <li>{{followers}}</li>
+        </ul>
+        
+        <h2> User Posts </h2>
+        <ul>
         {% for post in user_posts %}
             <li>{{post}}</li>
         {% endfor %}
-    {% endif %}
-    
-    {{message}}
+        </ul>
 
+    {% endif %}
+    {{message}}
 {% endblock %}
