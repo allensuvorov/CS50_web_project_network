@@ -112,7 +112,7 @@ def profile(request):
     # get user posts from DB
     user_posts = {}
     if Post.objects.filter(author=request.user).exists():
-        user_posts = Post.objects.filter(author=request.user)
+        user_posts = Post.objects.filter(author=request.user).order_by("-date_time")
     
     # get number of followers of user
     print(request.user.following.count())
