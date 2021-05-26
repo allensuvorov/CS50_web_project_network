@@ -121,6 +121,6 @@ def profile(request):
     context = {
         "user_posts": user_posts,
         "following": request.user.following.count(),
-        # "followers": request.user.followers.count()
+        "followers": request.user.followers.count()
     }
     return render(request, "network/profile.html", context)

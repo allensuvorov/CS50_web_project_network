@@ -4,7 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     # pass
-    following = models.ManyToManyField('self', blank=True, related_name="followers") # how to avoid following yourself
+    following = models.ManyToManyField('self', symmetrical=False, related_name="followers", blank=True) # how to avoid following yourself
     def __str__(self):
         return f"USER: {self.username}, Following: {self.following.count()}"
 
