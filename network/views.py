@@ -114,13 +114,16 @@ def profile(request):
     if Post.objects.filter(author=request.user).exists():
         user_posts = Post.objects.filter(author=request.user).order_by("-date_time")
     
-    # get number of followers of user
+    
     print(request.user.following.count())
 
+    # get other users
+    other_users = User.objects.exclude(id=request.user.id)
 
     context = {
         "user_posts": user_posts,
-        "following": request.user.following.count(),
-        "followers": request.user.followers.count()
+        "following": request.user.following.count(), 
+        "followers": request.user.followers.count(), # get number of followers of user
+        "other_users": other_users
     }
     return render(request, "network/profile.html", context)
