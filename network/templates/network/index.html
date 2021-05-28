@@ -1,11 +1,11 @@
 {% extends "network/layout.html" %}
 
 {% block body %}
+    
+    {{message}}
 
     {% if user.is_authenticated %}
-        <h1> 
-            All Posts
-        </h1>
+        
         <form action="newpost" method="post">
             {% csrf_token %}
             {{ newpostform }}
@@ -13,14 +13,16 @@
             <br>
             <input class="btn btn-outline-primary" type="submit" value="Submit">
         </form>
-        <br>
-        <ul>
-        {% for post in all_posts %}
-            <li>{{post}}</li>
-        {% endfor %}
-        </ul>
     {% endif %}
     
-    {{message}}
+    <br>
+    <h2> All Posts </h2>
+    <ul>
+    {% for post in all_posts %}
+        <li>{{post}}</li>
+    {% endfor %}
+    </ul>
+    
+  
 
 {% endblock %}

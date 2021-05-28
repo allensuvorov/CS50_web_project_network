@@ -18,26 +18,26 @@ class NewPostForm(forms.Form):
     )
 
 def index(request):
-    # if user is not authenticated than show index page with login and register links
-    if not request.user.is_authenticated:
-        return render(request, "network/index.html", {"message": "Welcome to Network, please register or login"})
     
-    # else show user page
-
-    # context = {"newpostform": NewPostForm()}
-    
-    # if Post.objects.all().exists():
-    #     context["all_posts"]=Post.objects.all()
-    #     print(context["all_posts"])
-    
+    # get all posts from database
     all_posts = []
     if Post.objects.all().exists():
         all_posts=Post.objects.all().order_by("-date_time")
-
-    context = {
-        "newpostform": NewPostForm(),
-        "all_posts": all_posts
-    }
+        
+    # if user is not authenticated than show message and all posts
+    
+    if not request.user.is_authenticated:
+        context = {
+            "message": "Welcome to Network, please register or login",
+            "all_posts": all_posts
+        }
+    
+    # else show user page with form and all posts
+    else:
+        context = {
+            "newpostform": NewPostForm(),
+            "all_posts": all_posts
+        }
     return render(request, "network/index.html", context)
 
 def login_view(request):
@@ -110,11 +110,11 @@ def new_post(request):
 
 def profile(request):
     # get user posts from DB
-    user_posts = {}
+    user_posts = []
     if Post.objects.filter(author=request.user).exists():
         user_posts = Post.objects.filter(author=request.user).order_by("-date_time")
     
-    
+    print(user_posts[0])
     print(request.user.following.count())
 
     # get other users
@@ -127,3 +127,10 @@ def profile(request):
         "other_users": other_users
     }
     return render(request, "network/profile.html", context)
+
+def follow(request):
+    pass
+    # how about 
+
+def unfollow(request):
+    pass
