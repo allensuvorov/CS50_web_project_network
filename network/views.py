@@ -20,24 +20,17 @@ class NewPostForm(forms.Form):
 def index(request):
     
     # get all posts from database
-    all_posts = []
+    context = {}
     if Post.objects.all().exists():
-        all_posts=Post.objects.all().order_by("-date_time")
+        context["all_posts"] = Post.objects.all().order_by("-date_time")
         
     # if user is not authenticated than show message and all posts
-    
     if not request.user.is_authenticated:
-        context = {
-            "message": "Welcome to Network, please register or login",
-            "all_posts": all_posts
-        }
+        context["message"] = "Welcome to Network, please register or login"
     
     # else show user page with form and all posts
     else:
-        context = {
-            "newpostform": NewPostForm(),
-            "all_posts": all_posts
-        }
+        context["newpostform"] = NewPostForm()
     return render(request, "network/index.html", context)
 
 def login_view(request):
