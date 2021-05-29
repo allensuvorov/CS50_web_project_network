@@ -123,7 +123,17 @@ def profile(request):
 
 def follow(request):
     pass
-    # how about 
+    # draft follow function
+    if request.method == "POST":
+        usertofollow_id = request.POST["usertofollow_id"]
+
+        # grab User from DB
+        user = User.objects.get(id=request.user.id) # why not just user = request.user
+        # grab user to follow from DB
+        usertofollow = User.objests.get(id=usertofollow_id)
+        # set the reationship
+        user.following.set(usertofollow.username)
+
 
 def unfollow(request):
     pass
