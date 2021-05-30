@@ -121,7 +121,7 @@ def profile(request):
     }
     return render(request, "network/profile.html", context)
 
-def follow(request):
+def follow_unfollow(request):
     pass
     # draft follow function
     if request.method == "POST":
@@ -132,8 +132,12 @@ def follow(request):
         # grab user to follow from DB
         usertofollow = User.objests.get(id=usertofollow_id)
         # set the reationship
-        user.following.set(usertofollow.username)
+        if action == follow:
+            user.following.set(usertofollow.username)
+        if action == unfollow:
+            user.following.remove(usertofollow.username)
 
 
-def unfollow(request):
-    pass
+# def unfollow(request):
+#     pass
+#     if request.method == "POST":
