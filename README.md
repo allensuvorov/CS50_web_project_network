@@ -25,5 +25,4 @@ Design a Twitter-like social network website for making posts and following user
 Idea: 
 
 Next step:
-- let's do newpost without fetch, direct html - to server
-- to do that - add link to the button so that it calls a server function and passes the text of the post
+- add react to the project, to sepetare JS file
