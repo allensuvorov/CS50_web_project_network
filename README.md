@@ -25,4 +25,4 @@ Design a Twitter-like social network website for making posts and following user
 Idea: 
 
 Next step:
-- add react to the project, to sepetare JS file
+- add react to the project, to a separate JS file
