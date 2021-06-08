@@ -20,10 +20,11 @@
             {% endfor %}
         </ul>
         <h2> Other users </h2>
-            <div id="follow_button_container"></div>
+            
         <ul>
             {% for user in other_users%}
                 <li>{{user}}</li>
+                <div class="follow_button_container" data-commentid="{{user.id}}"></div>
             {% endfor %}
         </ul>
     {% endif %}
