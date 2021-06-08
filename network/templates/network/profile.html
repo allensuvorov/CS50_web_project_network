@@ -23,8 +23,9 @@
             
         <ul>
             {% for user in other_users%}
-                <li>{{user}}</li>
-                <div class="follow_button_container" data-commentid="{{user.id}}"></div>
+                <li>{{user.username}}
+                    <react class="follow_button_container" data-commentid="{{user.names}}"></react>
+                </li>
             {% endfor %}
         </ul>
     {% endif %}

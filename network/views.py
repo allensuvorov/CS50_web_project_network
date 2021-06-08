@@ -111,7 +111,7 @@ def profile(request):
     print(request.user.following.count())
 
     # get other users
-    other_users = User.objects.exclude(id=request.user.id)
+    other_users = User.objects.exclude(id=request.user.id).values()
 
     context = {
         "user_posts": user_posts,

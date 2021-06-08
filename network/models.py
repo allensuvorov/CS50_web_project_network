@@ -6,7 +6,7 @@ class User(AbstractUser):
     # pass
     following = models.ManyToManyField('self', symmetrical=False, related_name="followers", blank=True) # how to avoid following yourself
     def __str__(self):
-        return f"USER: {self.username}, Following: {self.following.count()}"
+        return f"User: {self.username}, Following: {self.following.count()}"
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
