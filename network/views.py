@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django import forms
@@ -121,21 +121,34 @@ def profile(request):
     }
     return render(request, "network/profile.html", context)
 
-def follow_unfollow(request):
+def follow(request):
     pass
     # draft follow function
     if request.method == "POST":
         usertofollow_id = request.POST["usertofollow_id"]
-
-        # grab User from DB
+        # grab current User from DB
         user = User.objects.get(id=request.user.id) # why not just user = request.user
         # grab user to follow from DB
         usertofollow = User.objests.get(id=usertofollow_id)
         # set the reationship
-        if action == follow:
-            user.following.set(usertofollow.username)
-        if action == unfollow:
-            user.following.remove(usertofollow.username)
+        user.following.set(usertofollow.username)
+        return JsonResponse ({'following': True})
+
+# def follow_unfollow(request):
+#     pass
+#     # draft follow function
+#     if request.method == "POST":
+#         usertofollow_id = request.POST["usertofollow_id"]
+
+#         # grab User from DB
+#         user = User.objects.get(id=request.user.id) # why not just user = request.user
+#         # grab user to follow from DB
+#         usertofollow = User.objests.get(id=usertofollow_id)
+#         # set the reationship
+#         if action == follow:
+#             user.following.set(usertofollow.username)
+#         if action == unfollow:
+#             user.following.remove(usertofollow.username)
 
 
 # def unfollow(request):
