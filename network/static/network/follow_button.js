@@ -11,7 +11,7 @@ class FollowButton extends React.Component {
   render() {
     if (this.state.following) {
 
-      fetch('follow')
+      // fetch('follow')
       
       return 'You are following ' + this.props.commentID;
     }
