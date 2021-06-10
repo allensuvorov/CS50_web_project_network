@@ -109,7 +109,7 @@ def profile(request):
     
     print(user_posts[0])
     print(request.user.following.count())
-
+    print(request.user.following.all())
     # get other users
     other_users = User.objects.exclude(id=request.user.id).values()
 
@@ -117,7 +117,8 @@ def profile(request):
         "user_posts": user_posts,
         "following": request.user.following.count(), 
         "followers": request.user.followers.count(), # get number of followers of user
-        "other_users": other_users
+        "other_users": other_users,
+        "following": request.user.following.all() # let's get a list of all users being followed
     }
     return render(request, "network/profile.html", context)
 
