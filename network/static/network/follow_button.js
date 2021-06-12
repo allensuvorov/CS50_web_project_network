@@ -9,11 +9,12 @@ class FollowButton extends React.Component {
   }
 
   render() {
+    
     if (this.state.following) {
 
       // fetch('follow')
       
-      return 'You are following ' + this.props.commentID;
+      return 'You are following ' + this.props.userID;
     }
 
     return e(
@@ -28,9 +29,9 @@ class FollowButton extends React.Component {
 document.querySelectorAll('.follow_button_container')
   .forEach(domContainer => {
     // Read the comment ID from a data-* attribute.
-    const commentID = parseInt(domContainer.dataset.commentid, 10);
+    const userID = parseInt(domContainer.dataset.userid, 10);
     ReactDOM.render(
-      e(FollowButton, { commentID: commentID }),
+      e(FollowButton, { userID: userID }),
       domContainer
     );
   });
