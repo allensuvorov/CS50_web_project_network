@@ -102,6 +102,9 @@ def new_post(request):
     return HttpResponseRedirect(reverse("index"))
 
 def profile(request):
+    # if user is not authenticated than open index page
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("index"))
     # get user posts from DB
     user_posts = []
     if Post.objects.filter(author=request.user).exists():
@@ -116,7 +119,7 @@ def profile(request):
     context = {
         "user_posts": user_posts,
         "following_count": request.user.following.count(), 
-        "followers": request.user.followers.count(), # get number of followers of user
+        "followers_count": request.user.followers.count(), # get number of followers of user
         "other_users": other_users,
         "following_users": request.user.following.all() # let's get a list of all users being followed
     }
