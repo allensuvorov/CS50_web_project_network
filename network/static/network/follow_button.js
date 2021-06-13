@@ -10,6 +10,8 @@ class FollowButton extends React.Component {
 
   render() {
     
+    // here will fetch... to get following status from server
+    
     if (this.state.following) {
 
       // fetch('follow')
