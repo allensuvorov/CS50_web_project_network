@@ -24,8 +24,9 @@ class FollowButton extends React.Component {
       return e(
         'button',
         { onClick: () => this.setState({ following: false }) },
-        'UnFollow'
-    }
+        'Unfollow'
+      );  
+    };
 
     return e(
       'button',
