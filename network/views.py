@@ -125,7 +125,7 @@ def profile(request):
     }
     return render(request, "network/profile.html", context)
 
-def follow(request):
+def follow(request, userid):
     pass
     # draft follow function
     if request.method == "POST":
