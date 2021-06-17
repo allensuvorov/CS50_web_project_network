@@ -6,13 +6,14 @@ class FollowButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = { following: false };
+    // here will fetch... to get following status from server
+    // fetch(`/follow_status_check/${userID}`) //sending to the server userID to check if following
+      // .then(response=> response.)
   }
 
   render() {
     
-    // here will fetch... to get following status from server
-    // fetch(`/follow_status_check/${userID}`) //sending to the server userID to check if following
-      // .then(response=> response.)
+    
     // fetch(`/unfollow/${userID}`) // unfollow
     
     if (this.state.following) {
