@@ -138,6 +138,17 @@ def follow(request, userid):
         user.following.set(usertofollow.username)
         return JsonResponse ({'following': True})
 
+def follow_status_check(request, userid):
+    if request.method == "POST":
+        userid = request.POST["userid"]
+        if userid in request.user.following.all():
+            follow_status = True
+        else:
+            follow_status = False
+    return JsonResponse ({'following': follow_status})
+
+
+
 # def follow_unfollow(request):
 #     pass
 #     # draft follow function
