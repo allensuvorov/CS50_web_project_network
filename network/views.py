@@ -110,9 +110,9 @@ def profile(request):
     if Post.objects.filter(author=request.user).exists():
         user_posts = Post.objects.filter(author=request.user).order_by("-date_time")
     
-    print(user_posts[0])
-    print(request.user.following.count())
-    print(request.user.following.all())
+    # print(user_posts[0])
+    # print(request.user.following.count())
+    # print(request.user.following.all())
     # get other users
     other_users = User.objects.exclude(id=request.user.id).values()
 
@@ -139,12 +139,15 @@ def follow(request, userid):
         return JsonResponse ({'following': True})
 
 def follow_status_check(request, userid):
-    if request.method == "POST":
-        userid = request.POST["userid"]
-        if userid in request.user.following.all():
-            follow_status = True
-        else:
-            follow_status = False
+    print(userid)
+    pass
+    follow_status = False
+    # if request.method == "GET":
+        # userid = request.GET["userid"]
+    if User.objects.get(id=userid) in request.user.following.all():
+        follow_status = True
+    print (follow_status)
+    # print(request.user + "following is" + follow_status + userid)
     return JsonResponse ({'following': follow_status})
 
 
