@@ -11,7 +11,18 @@ class FollowButton extends React.Component {
 
   render() {
     
+    // here will fetch... to get following status from server
+    fetch(`/follow_status_check/${this.props.userID}`) //sending to the server userID to check if following
+      .then(response=> response.json())
+      .then(data=>{
+        console.log(data);
+        console.log(data.following);
+        // const following=data.following;
+        // following = data.following;
+      });
     
+    // console.log(following);
+    // this.state.following = following;
     // fetch(`/unfollow/${userID}`) // unfollow
     
     if (this.state.following) {
@@ -41,12 +52,7 @@ document.querySelectorAll('.follow_button_container')
     // Read the comment ID from a data-* attribute.
     const userID = parseInt(domContainer.dataset.userid, 10);
     
-    // here will fetch... to get following status from server
-    fetch(`/follow_status_check/${userID}`) //sending to the server userID to check if following
-      .then(response=> response.json())
-      .then(data=>{
-        console.log(data)
-      });
+    
     
     
     ReactDOM.render(
