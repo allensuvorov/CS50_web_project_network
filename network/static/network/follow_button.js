@@ -9,8 +9,7 @@ class FollowButton extends React.Component {
     
   }
 
-  render() {
-    
+  componentDidMount () {
     // here will fetch... to get following status from server
     fetch(`/follow_status_check/${this.props.userID}`) //sending to the server userID to check if following
       .then(response=> response.json())
@@ -20,25 +19,24 @@ class FollowButton extends React.Component {
         // const following=data.following;
         // following = data.following;
       });
-    
-    // console.log(following);
-    // this.state.following = following;
-    // fetch(`/unfollow/${userID}`) // unfollow
-    
-    if (this.state.following) {
-      // tell server to follow that user
-      // fetch(`/follow/${userID}`) // follow
+  }
 
+  render() {
+    if (this.state.following) {
+      
       // show "unfollow" button 
+      // fetch(`/unfollow/${userID}`) // unfollow
       // return 'You are following ' + this.props.userID;
       return e(
         'button',
         { onClick: () => this.setState({ following: false }) },
         'Unfollow'
-      );  
-    };
-
-    return e(
+        );  
+      };
+      
+      return e(
+      // tell server to follow that user
+      // fetch(`/follow/${userID}`) // follow
       'button',
       { onClick: () => this.setState({ following: true }) },
       'Follow'
@@ -60,8 +58,3 @@ document.querySelectorAll('.follow_button_container')
       domContainer
     );
   });
-
-// ... the starter code you pasted ...
-
-// const domContainer = document.querySelector('.follow_button_container');
-// ReactDOM.render(e(FollowButton), domContainer);

@@ -140,14 +140,10 @@ def follow(request, userid):
 
 def follow_status_check(request, userid):
     print(userid)
-    pass
     follow_status = False
-    # if request.method == "GET":
-        # userid = request.GET["userid"]
     if User.objects.get(id=userid) in request.user.following.all():
         follow_status = True
     print (follow_status)
-    # print(request.user + "following is" + follow_status + userid)
     return JsonResponse ({'following': follow_status})
 
 
