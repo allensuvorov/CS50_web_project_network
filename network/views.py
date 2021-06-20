@@ -138,7 +138,7 @@ def follow(request, userid):
         user.following.set(usertofollow.username)
         return JsonResponse ({'following': True})
 
-def follow_status_check(request, userid):
+def status(request, userid):
     print(userid)
     follow_status = False
     if User.objects.get(id=userid) in request.user.following.all():
@@ -146,7 +146,12 @@ def follow_status_check(request, userid):
     print (follow_status)
     return JsonResponse ({'following': follow_status})
 
+def unfollow(request, userid):
+    pass
 
+#     request.user.following.remove
+
+    
 
 # def follow_unfollow(request):
 #     pass
@@ -165,6 +170,3 @@ def follow_status_check(request, userid):
 #             user.following.remove(usertofollow.username)
 
 
-# def unfollow(request):
-#     pass
-#     if request.method == "POST":
