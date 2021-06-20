@@ -125,32 +125,22 @@ def profile(request):
     }
     return render(request, "network/profile.html", context)
 
-def follow(request, userid):
-    pass
-    # draft follow function
-    if request.method == "POST":
-        usertofollow_id = request.POST["usertofollow_id"]
-        # grab current User from DB
-        user = User.objects.get(id=request.user.id) # why not just user = request.user
-        # grab user to follow from DB
-        usertofollow = User.objests.get(id=usertofollow_id)
-        # set the reationship
-        user.following.set(usertofollow.username)
-        return JsonResponse ({'following': True})
-
 def status(request, userid):
-    print(userid)
     follow_status = False
     if User.objects.get(id=userid) in request.user.following.all():
         follow_status = True
+    print(userid)
     print (follow_status)
     return JsonResponse ({'following': follow_status})
 
-def unfollow(request, userid):
-    pass
+def follow(request, userid):
+    request.user.following.add(User.objects.get(id=userid))
+    print ("follow: " + str(User.objects.get(id=userid)))
+    return JsonResponse ({'following': True})
 
+def unfollow(request, userid):
     request.user.following.remove(User.objects.get(id=userid))
-    print ("unfollowed" + User.objects.get(id=userid))
+    print ("unfollow: " + str(User.objects.get(id=userid)))
     return JsonResponse ({'following': False})
 
     
