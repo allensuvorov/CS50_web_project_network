@@ -14,7 +14,7 @@ class FollowButton extends React.Component {
     fetch(`/status/${this.props.userID}`) //sending to the server userID to check if following
       .then(response=> response.json())
       .then(data=>{
-        this.setState({following: data.following})
+        this.setState({following: data.following});
         console.log(data);
         console.log(data.following);
       });
@@ -27,12 +27,17 @@ class FollowButton extends React.Component {
       // return 'You are following ' + this.props.userID;
       return e(
         'button',
-        { onClick: () => {
-          
-          // fetch(`/unfollow/${this.props.userID}`) // unfollow
-          //   .then()
-          this.setState({ following: false }) 
-          }
+        { onClick: () => 
+          {
+          fetch(`/unfollow/${this.props.userID}`) // unfollow
+          .then(response=> response.json())
+          .then(data=>{
+            this.setState({following: data.following})
+            console.log(data);
+            console.log(data.following);
+            this.setState({ following: false }) 
+            });
+          },
         },
         'Unfollow'
         );  

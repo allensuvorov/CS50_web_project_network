@@ -149,7 +149,9 @@ def status(request, userid):
 def unfollow(request, userid):
     pass
 
-#     request.user.following.remove
+    request.user.following.remove(User.objects.get(id=userid))
+    print ("unfollowed" + User.objects.get(id=userid))
+    return JsonResponse ({'following': False})
 
     
 
