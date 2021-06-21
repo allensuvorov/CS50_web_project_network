@@ -143,22 +143,7 @@ def unfollow(request, userid):
     print ("unfollow: " + str(User.objects.get(id=userid)))
     return JsonResponse ({'following': False})
 
-    
-
-# def follow_unfollow(request):
-#     pass
-#     # draft follow function
-#     if request.method == "POST":
-#         usertofollow_id = request.POST["usertofollow_id"]
-
-#         # grab User from DB
-#         user = User.objects.get(id=request.user.id) # why not just user = request.user
-#         # grab user to follow from DB
-#         usertofollow = User.objests.get(id=usertofollow_id)
-#         # set the reationship
-#         if action == follow:
-#             user.following.set(usertofollow.username)
-#         if action == unfollow:
-#             user.following.remove(usertofollow.username)
+def following(request):
+    pass
 
 
