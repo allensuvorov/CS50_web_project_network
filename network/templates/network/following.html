@@ -3,22 +3,11 @@
 {% block body %}
     
     {{message}}
-
-    {% if user.is_authenticated %}
-        
-        <form action="newpost" method="post">
-            {% csrf_token %}
-            {{ newpostform }}
-
-            <br>
-            <input class="btn btn-outline-primary" type="submit" value="Submit">
-        </form>
-    {% endif %}
     
     <br>
-    <h2> All Posts </h2>
+    <h2> Following Posts </h2>
     <ul>
-    {% for post in all_posts %}
+    {% for post in posts %}
         <li>{{post}}</li>
     {% endfor %}
     </ul>

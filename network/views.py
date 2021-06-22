@@ -147,6 +147,26 @@ def following(request):
     # if user is not authenticated than open index page
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("index"))
+    # get users that the user follows
+    users = request.user.following.all()
+    # that list will hold all posts that the user follows
+    posts = []
+    # that loop takes 
+    for user in users:
+        posts += user.posts
+    
+    # function that gets date and time from a post
+    def datetime(p):
+        return p.date_time
+
+    # sort by date and time
+    posts.sort(reverse=True, key=datetime)
+    
+    return render(request, "network/following.html", posts)
+    # get all posts
+    # all_posts = Post.objects.all().order_by("-date_time")
+
+
     
 
 
