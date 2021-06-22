@@ -149,11 +149,14 @@ def following(request):
         return HttpResponseRedirect(reverse("index"))
     # get users that the user follows
     users = request.user.following.all()
+    print(users)
     # that list will hold all posts that the user follows
     posts = []
     # that loop takes 
     for user in users:
-        posts += user.posts
+        # posts += user.posts
+        print(user)
+        print(user.posts)
     
     # function that gets date and time from a post
     def datetime(p):
@@ -162,7 +165,7 @@ def following(request):
     # sort by date and time
     posts.sort(reverse=True, key=datetime)
     
-    return render(request, "network/following.html", posts)
+    return render(request, "network/following.html", {"posts": posts})
     # get all posts
     # all_posts = Post.objects.all().order_by("-date_time")
 
