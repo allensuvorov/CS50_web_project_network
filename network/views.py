@@ -144,6 +144,9 @@ def unfollow(request, userid):
     return JsonResponse ({'following': False})
 
 def following(request):
-    pass
+    # if user is not authenticated than open index page
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("index"))
+    
 
 
