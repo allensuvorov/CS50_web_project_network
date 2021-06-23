@@ -156,7 +156,8 @@ def following(request):
     for user in users:
         # posts += user.posts
         print(user)
-        print(user.posts)
+        print(user.posts.all())
+        print(user.username)
     
     # function that gets date and time from a post
     def datetime(p):
