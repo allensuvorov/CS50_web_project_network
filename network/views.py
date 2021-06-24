@@ -154,10 +154,10 @@ def following(request):
     posts = []
     # that loop takes 
     for user in users:
-        # posts += user.posts
-        print(user)
-        print(user.posts.all())
-        print(user.username)
+        posts += user.posts.all()
+        # print(user)
+        # print(user.posts.all())
+        # print(user.username)
     
     # function that gets date and time from a post
     def datetime(p):
