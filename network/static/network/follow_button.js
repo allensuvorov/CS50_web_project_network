@@ -15,7 +15,7 @@ class FollowButton extends React.Component {
       .then(response=> response.json())
       .then(data=>{
         this.setState({following: data.following});
-        console.log(data.following);
+        // console.log(data.following);
       });
   }
 

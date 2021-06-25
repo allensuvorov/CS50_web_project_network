@@ -110,9 +110,6 @@ def profile(request):
     if Post.objects.filter(author=request.user).exists():
         user_posts = Post.objects.filter(author=request.user).order_by("-date_time")
     
-    # print(user_posts[0])
-    # print(request.user.following.count())
-    # print(request.user.following.all())
     # get other users
     other_users = User.objects.exclude(id=request.user.id).values()
 
@@ -154,10 +151,7 @@ def following(request):
     posts = []
     # that loop takes 
     for user in users:
-        posts += user.posts.all()
-        # print(user)
-        # print(user.posts.all())
-        # print(user.username)
+        posts += user.posts.all() # collect all following posts
     
     # function that gets date and time from a post
     def datetime(p):
@@ -167,8 +161,7 @@ def following(request):
     posts.sort(reverse=True, key=datetime)
     
     return render(request, "network/following.html", {"posts": posts})
-    # get all posts
-    # all_posts = Post.objects.all().order_by("-date_time")
+    
 
 
     
