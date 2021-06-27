@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.core import paginator
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
@@ -23,8 +24,16 @@ def index(request):
     # get all posts from database
     context = {}
     if Post.objects.all().exists():
-        context["all_posts"] = Post.objects.all().order_by("-date_time")
-        
+        all_posts = Post.objects.all().order_by("-date_time")
+    
+        # now add paginition
+        paginator = Paginator(all_posts, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        context["all_posts"] = all_posts
+        context["page_obj"] = page_obj
+
     # if user is not authenticated than show message and all posts
     if not request.user.is_authenticated:
         context["message"] = "Welcome to Network, please register or login"
