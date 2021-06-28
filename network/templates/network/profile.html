@@ -13,19 +13,19 @@
             <li>Followers: {{followers_count}}</li>
         </ul>
         
-        <h2> User Posts </h2>
-        <ul>
-            {% for post in user_posts %}
-            <li>{{post}}</li>
-            {% endfor %}
-        </ul>
         <h2> Other users </h2>
-            
         <ul>
             {% for user in other_users%}
                 <li>{{user.username}}
                     <react class="follow_button_container" data-userid="{{user.id}}"></react>
                 </li>
+            {% endfor %}
+        </ul>
+
+        <h2> User Posts </h2>
+        <ul>
+            {% for post in user_posts %}
+            <li>{{post}}</li>
             {% endfor %}
         </ul>
     {% endif %}
