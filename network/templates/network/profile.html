@@ -24,7 +24,7 @@
 
         <h2> User Posts </h2>
         <ul>
-            {% for post in user_posts %}
+            {% for post in page_obj %}
             <li>{{post}}</li>
             {% endfor %}
         </ul>

@@ -30,8 +30,6 @@ def index(request):
         paginator = Paginator(all_posts, 10)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
-
-        context["all_posts"] = all_posts
         context["page_obj"] = page_obj
 
     # if user is not authenticated than show message and all posts
@@ -119,12 +117,15 @@ def profile(request):
     user_posts = []
     if Post.objects.filter(author=request.user).exists():
         user_posts = Post.objects.filter(author=request.user).order_by("-date_time")
-    
+    paginator = Paginator(user_posts,10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     # get other users
     other_users = User.objects.exclude(id=request.user.id).values()
 
     context = {
-        "user_posts": user_posts,
+        "page_obj": page_obj,
         "following_count": request.user.following.count(), 
         "followers_count": request.user.followers.count(), # get number of followers of user
         "other_users": other_users,
@@ -169,8 +170,10 @@ def following(request):
 
     # sort by date and time
     posts.sort(reverse=True, key=datetime)
-    
-    return render(request, "network/following.html", {"posts": posts})
+    paginator=Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, "network/following.html", {"page_obj": page_obj})
     
 
 
