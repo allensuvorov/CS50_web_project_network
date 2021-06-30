@@ -91,8 +91,9 @@
                             </li>
                         {% else %}
                             <li class="page-item active">
-                                <a class="page-link" href="?page={{ current_page }}">
+                                <a class="page-link">
                                     {{current_page}}
+                                    <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                         {% endif %}
