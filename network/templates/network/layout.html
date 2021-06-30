@@ -47,7 +47,7 @@
             {% endblock %}
         </div>
 
-        <div class="pagination">
+        {% comment %} <div class="pagination">
             <span class="step-links">
                 {% if page_obj.has_previous %}
                     <a href="?page=1">&laquo; first</a>
@@ -63,14 +63,14 @@
                     <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
                 {% endif %}
             </span>
-        </div>
+        </div> {% endcomment %}
 
         <nav aria-label="Posts navigation pages">
             <ul class="pagination">
                 {% if page_obj.has_previous %}
-                    <li class="page-item">
+                    {% comment %} <li class="page-item">
                         <a class="page-link" href="?page=1">&laquo; First</a> 
-                    </li>
+                    </li> {% endcomment %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
                             Previous
@@ -78,21 +78,34 @@
                     </li>
                 {% endif %}
                 
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                {% comment %} <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li> {% endcomment %}
+    
+                    {% comment %} {% for current_page in range (1, page_obj.paginator.num_pages)%} {% endcomment %}
+                    {% for current_page in page_obj.paginator.page_range %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ current_page }}">
+                                {{current_page}}
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                <span class="current">
+                </span>
                 
                 {% if page_obj.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                        next
+                            next
                         </a>
                     </li>
-                    <li class="page-item">
+                    {% comment %} <li class="page-item">
                         <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    </li>
+                    </li> {% endcomment %}
                 {% endif %}
             </ul>
         </nav>
+
     </body>
 </html>

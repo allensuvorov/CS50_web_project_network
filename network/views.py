@@ -137,8 +137,8 @@ def status(request, userid):
     follow_status = False
     if User.objects.get(id=userid) in request.user.following.all():
         follow_status = True
-    print(userid)
-    print (follow_status)
+    # print(userid)
+    # print (follow_status)
     return JsonResponse ({'following': follow_status})
 
 def follow(request, userid):
