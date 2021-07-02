@@ -16,7 +16,8 @@
         <h2> Other users </h2>
         <ul>
             {% for user in other_users%}
-                <li>{{user.username}}
+                <li>
+                    {{user.username}}
                     <react class="follow_button_container" data-userid="{{user.id}}"></react>
                 </li>
             {% endfor %}
@@ -25,7 +26,10 @@
         <h2> User Posts </h2>
         <ul>
             {% for post in page_obj %}
-            <li>{{post}}</li>
+                <li>
+                    {{post}}
+                    <react class="edit_button_container" data-postid="{{post.id}}"></react>
+                </li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -38,4 +42,5 @@
 
     <!-- Load our React component. -->
     <script src="static/network/follow_button.js"></script>
+    <script src="static/network/edit_button.js"></script>
 {% endblock %}
