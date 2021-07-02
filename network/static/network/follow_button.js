@@ -1,6 +1,6 @@
 'use strict';
 
-const e = React.createElement;
+const f = React.createElement;
 
 class FollowButton extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class FollowButton extends React.Component {
       
       // show "unfollow" button 
       // return 'You are following ' + this.props.userID;
-      return e(
+      return f(
         'button',
         { onClick: () => {
           fetch(`/unfollow/${this.props.userID}`) // unfollow
@@ -38,7 +38,7 @@ class FollowButton extends React.Component {
         );  
       };
       
-      return e(
+      return f(
         'button',
         { onClick: () => {
         // tell server to follow that user
@@ -61,7 +61,7 @@ document.querySelectorAll('.follow_button_container')
     const userID = parseInt(domContainer.dataset.userid, 10);
     
     ReactDOM.render(
-      e(FollowButton, { userID: userID }),
+      f(FollowButton, { userID: userID }),
       domContainer
     );
   });
