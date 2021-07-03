@@ -5,18 +5,23 @@ const e = React.createElement;
 class EditButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { liked: false };
+    this.state = { editing: false };
   }
 
   render() {
-    if (this.state.liked) {
-      return 'You liked comment number ' + this.props.postID;
+    if (this.state.editing) {
+        return e(
+            'button',
+            { onClick: () => this.setState({ editing: false }) },
+            'Save ' + this.props.postID
+          );
+    //   'You editing comment number ' + this.props.postID;
     }
 
     return e(
       'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
+      { onClick: () => this.setState({ editing: true }) },
+      'Edit ' + this.props.postID
     );
   }
 }
@@ -25,9 +30,9 @@ class EditButton extends React.Component {
 document.querySelectorAll('.edit_button_container')
   .forEach(domContainer => {
     // Read the comment ID from a data-* attribute.
-    const commentID = parseInt(domContainer.dataset.postid, 10);
+    const postID = parseInt(domContainer.dataset.postid, 10);
     ReactDOM.render(
-      e(EditButton, { commentID: commentID }),
+      e(EditButton, { postID: postID }),
       domContainer
     );
   });
