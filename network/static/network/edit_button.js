@@ -11,8 +11,12 @@ class EditButton extends React.Component {
   render() {
     if (this.state.editing) {
         return e(
-            'button',
-            { onClick: () => this.setState({ editing: false }) },
+            'button', { 
+                onClick: () => {
+                    this.setState({ editing: false })
+                    
+                } 
+            },
             'Save ' + this.props.postID
           );
     //   'You editing comment number ' + this.props.postID;
@@ -26,7 +30,7 @@ class EditButton extends React.Component {
   }
 }
 
-// Find all DOM containers, and render Like buttons into them.
+// Find all DOM containers, and render Edit buttons into them.
 document.querySelectorAll('.edit_button_container')
   .forEach(domContainer => {
     // Read the comment ID from a data-* attribute.
