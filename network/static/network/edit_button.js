@@ -13,10 +13,8 @@ class EditButton extends React.Component {
         return e(
             'button', { 
                 onClick: () => {
-                    this.setState({ editing: false })
-                    // document.getElementById()
-                    // const post = document.querySelector("#userlist");
-                    // const matches = container.querySelectorAll("li[data-active='1']");
+                    this.setState({ editing: false });
+                    
                 } 
             },
             'Save ' + this.props.postID
@@ -25,8 +23,13 @@ class EditButton extends React.Component {
     }
 
     return e(
-      'button',
-      { onClick: () => this.setState({ editing: true }) },
+        'button', { onClick: () => {
+            this.setState({ editing: true });
+            const post = document.getElementById(this.props.postID);
+                    console.log(post.innerText);
+                    document.getElementById(this.props.postID).innerHTML ='<textarea maxlength="500" cols="80" rows="4">'+post.innerText+'</textarea>'
+            }
+        },
       'Edit ' + this.props.postID
     );
   }
