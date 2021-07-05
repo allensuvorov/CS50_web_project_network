@@ -26,7 +26,7 @@
         <h2> User Posts </h2>
         <ul>
             {% for post in page_obj %}
-                <li>
+                <li class="post" data-postid="{{post.id}}">
                     {{post}}
                     <react class="edit_button_container" data-postid="{{post.id}}"></react>
                 </li>

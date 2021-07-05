@@ -14,7 +14,9 @@ class EditButton extends React.Component {
             'button', { 
                 onClick: () => {
                     this.setState({ editing: false })
-                    
+                    // document.getElementById()
+                    // const post = document.querySelector("#userlist");
+                    // const matches = container.querySelectorAll("li[data-active='1']");
                 } 
             },
             'Save ' + this.props.postID
