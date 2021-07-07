@@ -28,7 +28,7 @@ class EditButton extends React.Component {
                 this.setState({ editing: true });
                 const post = document.getElementById(this.props.postID);
                 console.log(post.innerText);
-                document.getElementById(this.props.postID).innerHTML ='<textarea maxlength="500" cols="80" rows="4">'+post.dataset.posttext+'</textarea>'
+                document.getElementById(this.props.postID).innerHTML ='<textarea maxlength="500" cols="80" rows="2">'+post.dataset.posttext+'</textarea>'
             }
         },
       'Edit ' + this.props.postID

@@ -27,8 +27,10 @@
         <ul>
             {% for post in page_obj %}
                 <li class="post" >
-                    <text id="{{post.id}}" data-posttext="{{post.text}}"> {{post}} </text>
-                    
+                    <b> {{post.author}} </b>
+                    <text id="{{post.id}}" data-posttext="{{post.text}}"> {{post.text}} </text>
+                    <b> {{post.date_time}} </b>
+                    <likes> Likes: {{post.likes_count}} </likes>
                     <react class="edit_button_container" data-postid="{{post.id}}"></react>
                 </li>
             {% endfor %}
