@@ -14,7 +14,8 @@ class EditButton extends React.Component {
             'button', { 
                 onClick: () => {
                     this.setState({ editing: false });
-                    
+                    const post = document.getElementById(this.props.postID);
+                    document.getElementById(this.props.postID).innerHTML ='<text>'+post.input+'</text>'
                 } 
             },
             'Save ' + this.props.postID
@@ -28,7 +29,7 @@ class EditButton extends React.Component {
                 this.setState({ editing: true });
                 const post = document.getElementById(this.props.postID);
                 console.log(post.innerText);
-                document.getElementById(this.props.postID).innerHTML ='<textarea maxlength="500" cols="80" rows="2">'+post.dataset.posttext+'</textarea>'
+                document.getElementById(this.props.postID).innerHTML ='<textarea maxlength="500" cols="50" rows="2">'+post.dataset.posttext+'</textarea>'
             }
         },
       'Edit ' + this.props.postID
