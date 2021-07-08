@@ -15,7 +15,8 @@ class EditButton extends React.Component {
                 onClick: () => {
                     this.setState({ editing: false });
                     const post = document.getElementById(this.props.postID);
-                    document.getElementById(this.props.postID).innerHTML ='<text>'+post.input+'</text>'
+                    console.log(post.innerHTML)
+                    document.getElementById(this.props.postID).innerHTML ='<text>'+post.firstChild.value+'</text>'
                 } 
             },
             'Save ' + this.props.postID
