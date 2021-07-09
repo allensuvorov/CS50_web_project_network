@@ -143,12 +143,12 @@ def status(request, userid):
 
 def follow(request, userid):
     request.user.following.add(User.objects.get(id=userid))
-    print ("follow: " + str(User.objects.get(id=userid)))
+    # print ("follow: " + str(User.objects.get(id=userid)))
     return JsonResponse ({'following': True})
 
 def unfollow(request, userid):
     request.user.following.remove(User.objects.get(id=userid))
-    print ("unfollow: " + str(User.objects.get(id=userid)))
+    # print ("unfollow: " + str(User.objects.get(id=userid)))
     return JsonResponse ({'following': False})
 
 def following(request):
@@ -175,8 +175,7 @@ def following(request):
     page_obj = paginator.get_page(page_number)
     return render(request, "network/following.html", {"page_obj": page_obj})
     
-
-
-    
+def save_post(request):
+    pass
 
 
