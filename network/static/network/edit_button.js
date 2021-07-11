@@ -13,11 +13,20 @@ class EditButton extends React.Component {
         return e(
             'button', { 
                 onClick: () => {
-                    this.setState({ editing: false });
-                    const post = document.getElementById(this.props.postID);
-                    console.log(post.innerHTML)
-                    document.getElementById(this.props.postID).innerHTML ='<text>'+post.firstChild.value+'</text>'
-                } 
+                    postID = this.props.postID;
+                    const post = document.getElementById(postID);
+                    console.log(post.innerHTML);
+                    
+                    const request = new Request(`/save/${this.props.postID}`, {method: 'POST', body: `{"text": ${post.firstChild.value}}`});
+                    
+                    fetch(`/save/${postID}`) // unfollow
+                        .then(response=> response.json())
+                        .then(data=>{
+                            this.setState({ editing: false });
+                            document.getElementById(postID).innerHTML ='<text>'+post.firstChild.value+'</text>'
+                            });
+                    },
+                }
             },
             'Save ' + this.props.postID
           );
