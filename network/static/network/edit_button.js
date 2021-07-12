@@ -16,14 +16,36 @@ class EditButton extends React.Component {
                     const postID = this.props.postID;
                     const post = document.getElementById(postID);
                     // console.log(post.innerHTML);
+
+                    function getCookie(name) {
+                        let cookieValue = null;
+                        if (document.cookie && document.cookie !== '') {
+                            const cookies = document.cookie.split(';');
+                            for (let i = 0; i < cookies.length; i++) {
+                                const cookie = cookies[i].trim();
+                                // Does this cookie string begin with the name we want?
+                                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+                    const csrftoken = getCookie('csrftoken');
+
+
                     
                     const request = new Request(`/save/${postID}`, {
-                        method: 'POST', 
-                        body: `{"text": ${post.firstChild.value}}`,
-                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                        // csrfmiddlewaretoken: '{{ csrf_token }}',
+                        headers: {'X-CSRFToken': csrftoken}
                         });
                     
-                    fetch(request) // unfollow
+                    fetch(request,{
+                        method: 'POST', 
+                        body: `{"text": ${post.firstChild.value}}`,
+                        mode: 'same-origin'  // Do not send CSRF token to another domain.
+                        }) // unfollow
                         .then(response=> response.json())
                         .then(data=>{
                             this.setState({ editing: false });
