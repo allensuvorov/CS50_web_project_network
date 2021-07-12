@@ -41,9 +41,11 @@ class EditButton extends React.Component {
                         headers: {'X-CSRFToken': csrftoken}
                         });
                     
+                    const data = {text: post.firstChild.value};
+
                     fetch(request,{
                         method: 'POST', 
-                        body: `{"text": ${post.firstChild.value}}`,
+                        body: JSON.stringify(data),
                         mode: 'same-origin'  // Do not send CSRF token to another domain.
                         }) // unfollow
                         .then(response=> response.json())

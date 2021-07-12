@@ -8,6 +8,7 @@ from django import forms
 from django.core.paginator import Paginator
 
 from .models import User, Post
+import json
 
 class NewPostForm(forms.Form):
     newpost = forms.CharField(
@@ -177,8 +178,13 @@ def following(request):
     
 # save post
 def save(request, postid):
-    text = request.body.text
-    Post.objects.get(id=postid).text = text
+
+    # getting body from request and decoding it
+    text = json.loads(request.body.decode("utf-8"))
+    print(text)
+    post = Post.objects.get(id=postid)
+    post.text = text
+    post.save()
     return JsonResponse ({'saved': True})
 
 
