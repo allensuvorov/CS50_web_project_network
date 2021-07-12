@@ -176,7 +176,7 @@ def following(request):
     page_obj = paginator.get_page(page_number)
     return render(request, "network/following.html", {"page_obj": page_obj})
     
-# save post
+# saving a post
 def save(request, postid):
 
     # getting body from request and decoding it
