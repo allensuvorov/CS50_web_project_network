@@ -180,10 +180,11 @@ def following(request):
 def save(request, postid):
 
     # getting body from request and decoding it
-    text = json.loads(request.body.decode("utf-8"))
-    print(text)
+    data = json.loads(request.body.decode("utf-8"))
+    print(data)
+    print(data['text'])
     post = Post.objects.get(id=postid)
-    post.text = text
+    post.text = data['text']
     post.save()
     return JsonResponse ({'saved': True})
 
