@@ -17,10 +17,24 @@
     
     <br>
     <h2> All Posts </h2>
+    
+    {% comment %} <ul>
+        {% for post in page_obj %}
+            <li>{{post}}</li>
+        {% endfor %}
+     </ul> {% endcomment %}
+
     <ul>
-    {% for post in page_obj %}
-        <li>{{post}}</li>
-    {% endfor %}
+        {% for post in page_obj %}
+            <li class="post" >
+                <b> {{post.author}} </b>
+                <text id="{{post.id}}"> {{post.text}} </text>
+                <b> {{post.date_time}} </b>
+                <likes> Likes: {{post.likes_count}} </likes>
+                <react class="edit_button_container" data-postid="{{post.id}}"></react>
+            </li>
+        {% endfor %}
+
     </ul>
 
     <!-- Load React. -->
@@ -31,6 +45,4 @@
     <!-- Load our React component. -->
     <script src="static/network/edit_button.js"></script>
     
-    
-
 {% endblock %}
