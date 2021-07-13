@@ -54,7 +54,7 @@ class EditButton extends React.Component {
                     },
                 
                 },
-            'Save ' + this.props.postID
+            'Save' //+ this.props.postID
         );
     //   'You editing comment number ' + this.props.postID;
     }
@@ -68,7 +68,7 @@ class EditButton extends React.Component {
                 document.getElementById(this.props.postID).innerHTML ='<textarea maxlength="500" cols="50" rows="2">'+post.innerText+'</textarea>'
             }
         },
-      'Edit ' + this.props.postID
+      'Edit'// + this.props.postID
     );
   }
 }
