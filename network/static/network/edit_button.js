@@ -34,8 +34,6 @@ class EditButton extends React.Component {
                     }
                     const csrftoken = getCookie('csrftoken');
 
-
-                    
                     const request = new Request(`/save/${postID}`, {
                         // csrfmiddlewaretoken: '{{ csrf_token }}',
                         headers: {'X-CSRFToken': csrftoken}
@@ -55,9 +53,9 @@ class EditButton extends React.Component {
                             });
                     },
                 
-            },
+                },
             'Save ' + this.props.postID
-          );
+        );
     //   'You editing comment number ' + this.props.postID;
     }
 

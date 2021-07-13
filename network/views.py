@@ -40,6 +40,8 @@ def index(request):
     # else show user page with form and all posts
     else:
         context["newpostform"] = NewPostForm()
+        context["user_id"] = request.user.id
+        # print("userid is " + str(request.user.id))
     return render(request, "network/index.html", context)
 
 def login_view(request):

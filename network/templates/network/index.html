@@ -31,7 +31,10 @@
                 <text id="{{post.id}}"> {{post.text}} </text>
                 <b> {{post.date_time}} </b>
                 <likes> Likes: {{post.likes_count}} </likes>
-                <react class="edit_button_container" data-postid="{{post.id}}"></react>
+                {% comment %} add edit button if user is auth-ed user {% endcomment %}
+                {% if user_id == post.author.id %}
+                    <react class="edit_button_container" data-postid="{{post.id}}"></react>
+                {% endif %}
             </li>
         {% endfor %}
 
