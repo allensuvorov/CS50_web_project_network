@@ -180,14 +180,23 @@ def following(request):
     
 # saving a post
 def save(request, postid):
+    # if user is not authenticated than open index page
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("index"))
 
     # getting body from request and decoding it
     data = json.loads(request.body.decode("utf-8"))
-    print(data)
-    print(data['text'])
+    # print(data)
+    # print(data['text'])
     post = Post.objects.get(id=postid)
-    post.text = data['text']
-    post.save()
-    return JsonResponse ({'saved': True})
+    # print(request.user)
+    # print(post.author)
+    # check it if you are trying to edit your post or other user's post
+    if request.user == post.author:
+        post.text = data['text']
+        post.save()
+        return JsonResponse ({'text': post.text})
+    print ("error: editing other users posts is not allowed")
+    return JsonResponse ({'text': post.text})
 
 

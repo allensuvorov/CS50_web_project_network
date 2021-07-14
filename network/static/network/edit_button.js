@@ -34,7 +34,7 @@ class EditButton extends React.Component {
                     }
                     
                     const csrftoken = getCookie('csrftoken');
-                    
+
                     // request has this route and token 
                     const request = new Request(`/save/${postID}`, {
                         // csrfmiddlewaretoken: '{{ csrf_token }}',
@@ -51,7 +51,7 @@ class EditButton extends React.Component {
                         .then(response=> response.json())
                         .then(data=>{
                             this.setState({ editing: false });
-                            document.getElementById(postID).innerHTML ='<text>'+post.firstChild.value+'</text>'
+                            document.getElementById(postID).innerHTML ='<text>'+data.text+'</text>' // instead of post.firstChild.value+
                             });
                     },
                 
