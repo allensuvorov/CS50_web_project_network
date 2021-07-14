@@ -15,8 +15,8 @@ class EditButton extends React.Component {
                 onClick: () => {
                     const postID = this.props.postID;
                     const post = document.getElementById(postID);
-                    // console.log(post.innerHTML);
-
+                    
+                    // acquire the token - read https://docs.djangoproject.com/en/3.2/ref/csrf/
                     function getCookie(name) {
                         let cookieValue = null;
                         if (document.cookie && document.cookie !== '') {
@@ -32,8 +32,10 @@ class EditButton extends React.Component {
                         }
                         return cookieValue;
                     }
+                    
                     const csrftoken = getCookie('csrftoken');
-
+                    
+                    // request has this route and token 
                     const request = new Request(`/save/${postID}`, {
                         // csrfmiddlewaretoken: '{{ csrf_token }}',
                         headers: {'X-CSRFToken': csrftoken}
