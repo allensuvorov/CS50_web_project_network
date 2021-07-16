@@ -13,8 +13,8 @@ urlpatterns = [
     path("following", views.following, name="following"),
     
     #API Routes
-    path("status/<int:userid>", views.status, name="status"),
-    path("like_status/<int:postid>", views.status, name="like_status"),
+    path("follow_status/<int:userid>", views.follow_status, name="follow_status"),
+    path("like_status/<int:postid>", views.like_status, name="like_status"),
     path("follow/<int:userid>", views.follow, name="follow"),
     path("unfollow/<int:userid>", views.unfollow, name="unfollow"),
     path("save/<int:postid>", views.save, name="save")

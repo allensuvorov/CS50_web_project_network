@@ -136,11 +136,10 @@ def profile(request):
     }
     return render(request, "network/profile.html", context)
 
-def status(request, userid):
+def follow_status(request, userid):
     follow_status = False
     if User.objects.get(id=userid) in request.user.following.all():
         follow_status = True
-    # print(userid)
     # print (follow_status)
     return JsonResponse ({'following': follow_status})
 
@@ -148,7 +147,7 @@ def like_status(request, postid):
     like_status = False
     if request.user in Post.objects.get(id=postid).likes_users.all():
         like_status = True
-    print(like_status)
+    # print(like_status)
     return JsonResponse ({'like': like_status})
 
 def follow(request, userid):

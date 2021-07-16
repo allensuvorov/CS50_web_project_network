@@ -11,7 +11,7 @@ class FollowButton extends React.Component {
 
   componentDidMount () {
     // here will fetch... to get following status from server
-    fetch(`/status/${this.props.userID}`) //sending to the server userID to check if following
+    fetch(`/follow_status/${this.props.userID}`) //sending to the server userID to check if following
       .then(response=> response.json())
       .then(data=>{
         this.setState({following: data.following});
