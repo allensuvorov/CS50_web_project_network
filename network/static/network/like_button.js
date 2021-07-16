@@ -14,7 +14,7 @@ class LikeButton extends React.Component {
           .then(response=> response.json())
           .then(data=>{
             this.setState({like: data.like});
-            // console.log(data.like);
+            console.log(data.like);
         });
     }
 

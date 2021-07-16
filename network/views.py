@@ -144,6 +144,13 @@ def status(request, userid):
     # print (follow_status)
     return JsonResponse ({'following': follow_status})
 
+def like_status(request, postid):
+    like_status = False
+    if request.user in Post.objects.get(id=postid).likes_users.all():
+        like_status = True
+    print(like_status)
+    return JsonResponse ({'like': like_status})
+
 def follow(request, userid):
     request.user.following.add(User.objects.get(id=userid))
     # print ("follow: " + str(User.objects.get(id=userid)))
