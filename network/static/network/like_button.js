@@ -8,6 +8,16 @@ class LikeButton extends React.Component {
         this.state = { liked: false };
     }
 
+    componentDidMount () {
+        // get like status from server
+        fetch(`/like_status/${this.props.postID}`) //sending to the server postID to check if liked
+          .then(response=> response.json())
+          .then(data=>{
+            this.setState({like: data.like});
+            // console.log(data.like);
+        });
+    }
+
     render() {
         if (this.state.liked) {
             return l(
@@ -24,7 +34,7 @@ class LikeButton extends React.Component {
             'Like'
         );
     }
-    }
+}
 
 // Find all DOM containers, and render Like buttons into them.
 document.querySelectorAll('.like_button_container')
@@ -35,4 +45,4 @@ document.querySelectorAll('.like_button_container')
       l(LikeButton, { postID: postID }),
       domContainer
     );
-  });
+});
