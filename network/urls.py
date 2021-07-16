@@ -14,8 +14,10 @@ urlpatterns = [
     
     #API Routes
     path("follow_status/<int:userid>", views.follow_status, name="follow_status"),
-    path("like_status/<int:postid>", views.like_status, name="like_status"),
     path("follow/<int:userid>", views.follow, name="follow"),
     path("unfollow/<int:userid>", views.unfollow, name="unfollow"),
-    path("save/<int:postid>", views.save, name="save")
+    path("save/<int:postid>", views.save, name="save"),
+    path("like_status/<int:postid>", views.like_status, name="like_status"),
+    path("like/<int:postid>", views.like, name="like"),
+    path("unlike/<int:postid>", views.unlike, name="unlike")
 ]

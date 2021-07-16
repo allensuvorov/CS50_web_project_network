@@ -143,13 +143,6 @@ def follow_status(request, userid):
     # print (follow_status)
     return JsonResponse ({'following': follow_status})
 
-def like_status(request, postid):
-    like_status = False
-    if request.user in Post.objects.get(id=postid).likes_users.all():
-        like_status = True
-    # print(like_status)
-    return JsonResponse ({'like': like_status})
-
 def follow(request, userid):
     request.user.following.add(User.objects.get(id=userid))
     # print ("follow: " + str(User.objects.get(id=userid)))
@@ -203,4 +196,35 @@ def save(request, postid):
         post.save()
         return JsonResponse ({'text': post.text})
 
+def like_status(request, postid):
+    like_status = False
+    if request.user in Post.objects.get(id=postid).likes_users.all():
+        like_status = True
+    print(like_status)
+    return JsonResponse ({'like': like_status})
+
+def like(request, postid):
+    post = Post.objects.get(id=postid)
+    post.likes_users.add(request.user)
+    print(post.likes_count)
+    post.likes_count += 1
+    print(post.likes_count)
+    post.save
+    context = {
+        'like': True,
+        'likes_count': post.likes_count
+    }
+    return JsonResponse (context)
+
+def unlike(request, postid):
+    # Post.objects.get(id=postid).likes_users.remove(request.user)
+    post = Post.objects.get(id=postid)
+    post.likes_users.remove(request.user)
+    post.likes_count += 1
+    post.save
+    context = {
+        'like': True,
+        'likes_count': post.likes_count
+    }
+    return JsonResponse (context)
 
