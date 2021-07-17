@@ -8,10 +8,24 @@
     <h2> Following Posts </h2>
     <ul>
     {% for post in page_obj %}
-        <li>{{post}}</li>
+        {% comment %} <li>{{post}}</li> {% endcomment %}
+
+        <li class="post" id="{{post.id}}">
+            <b> {{post.author}} </b>
+            <text class="text"> {{post.text}} </text>
+            <b> {{post.date_time}} </b>
+            <likes class="likes"> Likes: {{post.likes_count}} </likes>
+            <react class="like_button_container" data-postid="{{post.id}}"></react>
+        </li>
     {% endfor %}
     </ul>
-    
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="static/network/like_button.js"></script>
   
 
 {% endblock %}

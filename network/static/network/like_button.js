@@ -5,7 +5,9 @@ const l = React.createElement;
 class LikeButton extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { like: false };
+        this.state = { 
+            like: false
+        };
     }
 
     componentDidMount () {
@@ -13,8 +15,11 @@ class LikeButton extends React.Component {
         fetch(`/like_status/${this.props.postID}`) //sending to the server postID to check if liked
           .then(response=> response.json())
           .then(data=>{
-            this.setState({like: data.like});
-            console.log(data.like);
+            this.setState({
+                like: data.like
+            });
+
+            // console.log(data.like);
         });
     }
 
@@ -28,7 +33,7 @@ class LikeButton extends React.Component {
                         .then(data=>{
                             this.setState({ like: data.like });
                             // document.getElementById(postID)
-                            // like counter -1
+                            // data.likes_count // like counter -1
                             //
                             
                             });
@@ -46,6 +51,7 @@ class LikeButton extends React.Component {
                     .then(response=> response.json())
                     .then(data=>{
                         this.setState({ like: data.like });
+                        
                         // document.getElementById(postID)
                         // like counter +1
                         //

@@ -26,14 +26,14 @@
 
     <ul>
         {% for post in page_obj %}
-            <li class="post" >
+            <li class="post" id="{{post.id}}">
                 {% if user_id == post.author.id %}
                     <react class="edit_button_container" data-postid="{{post.id}}"></react>
                 {% endif %}
                 <b> {{post.author}} </b>
-                <text id="{{post.id}}"> {{post.text}} </text>
+                <text class="text"> {{post.text}} </text>
                 <b> {{post.date_time}} </b>
-                <likes class="likes" data-postid="{{post.id}}"> Likes: {{post.likes_count}} </likes>
+                <likes class="likes"> Likes: {{post.likes_count}} </likes>
                 <react class="like_button_container" data-postid="{{post.id}}"></react>
                 {% comment %} add edit button if user is auth-ed user {% endcomment %}
             </li>

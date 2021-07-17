@@ -14,7 +14,7 @@ class EditButton extends React.Component {
             'button', { 
                 onClick: () => {
                     const postID = this.props.postID;
-                    const post = document.getElementById(postID);
+                    const postText = document.getElementById(postID).getElementsByClassName('text')[0]
                     
                     // acquire the token - read https://docs.djangoproject.com/en/3.2/ref/csrf/
                     function getCookie(name) {
@@ -41,7 +41,7 @@ class EditButton extends React.Component {
                         headers: {'X-CSRFToken': csrftoken}
                         });
                     
-                    const data = {text: post.firstChild.value};
+                    const data = {text: postText.firstChild.value};
 
                     fetch(request,{
                         method: 'POST', 
@@ -51,7 +51,7 @@ class EditButton extends React.Component {
                         .then(response=> response.json())
                         .then(data=>{
                             this.setState({ editing: false });
-                            document.getElementById(postID).innerHTML ='<text>'+data.text+'</text>' // instead of post.firstChild.value+
+                            postText.innerHTML ='<text>'+data.text+'</text>'
                             });
                     },
                 
@@ -65,9 +65,10 @@ class EditButton extends React.Component {
         'button', { 
             onClick: () => {
                 this.setState({ editing: true });
-                const post = document.getElementById(this.props.postID);
-                console.log(post.innerText);
-                document.getElementById(this.props.postID).innerHTML ='<textarea maxlength="500" cols="50" rows="2">'+post.innerText+'</textarea>'
+                const post = document.getElementById(this.props.postID).getElementsByClassName("text")[0];
+                // console.log(post.innerText);
+                console.log(post);
+                post.innerHTML ='<textarea maxlength="500" cols="50" rows="2">'+post.innerText+'</textarea>'
             }
         },
       'Edit'// + this.props.postID
