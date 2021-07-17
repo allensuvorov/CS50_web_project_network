@@ -65,10 +65,10 @@ class EditButton extends React.Component {
         'button', { 
             onClick: () => {
                 this.setState({ editing: true });
-                const post = document.getElementById(this.props.postID).getElementsByClassName("text")[0];
+                const postText = document.getElementById(this.props.postID).getElementsByClassName("text")[0];
                 // console.log(post.innerText);
-                console.log(post);
-                post.innerHTML ='<textarea maxlength="500" cols="50" rows="2">'+post.innerText+'</textarea>'
+                console.log(postText);
+                postText.innerHTML ='<textarea maxlength="500" cols="50" rows="2">'+postText.innerText+'</textarea>'
             }
         },
       'Edit'// + this.props.postID
