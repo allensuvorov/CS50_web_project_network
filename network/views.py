@@ -200,7 +200,7 @@ def like_status(request, postid):
     like_status = False
     if request.user in Post.objects.get(id=postid).likes_users.all():
         like_status = True
-    print(like_status)
+    # print(like_status)
     return JsonResponse ({'like': like_status})
 
 def like(request, postid):
@@ -209,7 +209,7 @@ def like(request, postid):
     print(post.likes_count)
     post.likes_count += 1
     print(post.likes_count)
-    post.save
+    post.save()
     context = {
         'like': True,
         'likes_count': post.likes_count
@@ -220,8 +220,10 @@ def unlike(request, postid):
     # Post.objects.get(id=postid).likes_users.remove(request.user)
     post = Post.objects.get(id=postid)
     post.likes_users.remove(request.user)
+    print(post.likes_count)
     post.likes_count -= 1
-    post.save
+    print(post.likes_count)
+    post.save()
     context = {
         'like': False,
         'likes_count': post.likes_count
