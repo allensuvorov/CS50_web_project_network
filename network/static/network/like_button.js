@@ -23,12 +23,12 @@ class LikeButton extends React.Component {
             return l(
                 'button',
                 { onClick: () => {
-                    fetch(`/like/${this.props.postID}`) // like
+                    fetch(`/unlike/${this.props.postID}`) // like
                     .then(response=> response.json())
                     .then(data=>{
                         this.setState({ like: data.like });
                         // document.getElementById(postID)
-                        //
+                        // like counter -1
                         //
                         
                         });
@@ -56,4 +56,4 @@ document.querySelectorAll('.like_button_container')
       l(LikeButton, { postID: postID }),
       domContainer
     );
-});
+}); 

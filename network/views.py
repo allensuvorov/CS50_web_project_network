@@ -223,7 +223,7 @@ def unlike(request, postid):
     post.likes_count += 1
     post.save
     context = {
-        'like': True,
+        'like': False,
         'likes_count': post.likes_count
     }
     return JsonResponse (context)
