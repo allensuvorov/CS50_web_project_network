@@ -21,17 +21,17 @@ class LikeButton extends React.Component {
     render() {
         if (this.state.like) {
             return l(
-                'button',
-                { onClick: () => {
-                    fetch(`/unlike/${this.props.postID}`) // like
-                    .then(response=> response.json())
-                    .then(data=>{
-                        this.setState({ like: data.like });
-                        // document.getElementById(postID)
-                        // like counter -1
-                        //
-                        
-                        });
+                'button', {
+                    onClick: () => {
+                        fetch(`/unlike/${this.props.postID}`) // unlike
+                        .then(response=> response.json())
+                        .then(data=>{
+                            this.setState({ like: data.like });
+                            // document.getElementById(postID)
+                            // like counter -1
+                            //
+                            
+                            });
                     },
                 },
                 'Unlike'
@@ -40,8 +40,19 @@ class LikeButton extends React.Component {
         }
 
         return l(
-            'button',
-            { onClick: () => this.setState({ like: true }) },
+            'button', { 
+                onClick: () => {
+                    fetch(`/like/${this.props.postID}`) // like
+                    .then(response=> response.json())
+                    .then(data=>{
+                        this.setState({ like: data.like });
+                        // document.getElementById(postID)
+                        // like counter +1
+                        //
+                        
+                        });
+                    },
+            },
             'Like'
         );
     }

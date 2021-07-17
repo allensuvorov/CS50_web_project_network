@@ -220,7 +220,7 @@ def unlike(request, postid):
     # Post.objects.get(id=postid).likes_users.remove(request.user)
     post = Post.objects.get(id=postid)
     post.likes_users.remove(request.user)
-    post.likes_count += 1
+    post.likes_count -= 1
     post.save
     context = {
         'like': False,
