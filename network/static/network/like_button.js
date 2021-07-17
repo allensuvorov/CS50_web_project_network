@@ -28,16 +28,14 @@ class LikeButton extends React.Component {
             return l(
                 'button', {
                     onClick: () => {
+                        let postID = this.props.postID
                         const postLikes = document.getElementById(postID).getElementsByClassName('likes')[0]
 
-                        fetch(`/unlike/${this.props.postID}`) // unlike
+                        fetch(`/unlike/${postID}`) // unlike
                         .then(response=> response.json())
                         .then(data=>{
                             this.setState({ like: data.like });
                             postLikes.innerHTML = "Likes: " + data.likes_count;
-                            // document.getElementById(postID)
-                            // data.likes_count // like counter -1
-                            //
                             
                             });
                     },
@@ -50,17 +48,14 @@ class LikeButton extends React.Component {
         return l(
             'button', { 
                 onClick: () => {
+                    let postID = this.props.postID
                     const postLikes = document.getElementById(postID).getElementsByClassName('likes')[0]
 
-                    fetch(`/like/${this.props.postID}`) // like
+                    fetch(`/like/${postID}`) // like
                     .then(response=> response.json())
                     .then(data=>{
                         this.setState({ like: data.like });
                         postLikes.innerHTML = "Likes: " + data.likes_count;
-                        // document.getElementById(postID)
-                        // like counter +1
-                        //
-                        
                         });
                     },
             },
