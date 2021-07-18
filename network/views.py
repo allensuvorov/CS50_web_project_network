@@ -177,7 +177,7 @@ def following(request):
     page_obj = paginator.get_page(page_number)
     return render(request, "network/following.html", {"page_obj": page_obj})
     
-# saving a post
+# save a post
 def save(request, postid):
     # if user is not authenticated than open index page
     if not request.user.is_authenticated:

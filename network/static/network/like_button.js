@@ -41,7 +41,7 @@ class LikeButton extends React.Component {
                     },
                 },
                 'Unlike'
-              );
+            );
             // return 'You liked comment number ' + this.props.postID;
         }
 
