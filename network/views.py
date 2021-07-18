@@ -12,6 +12,7 @@ import json
 
 class NewPostForm(forms.Form):
     newpost = forms.CharField(
+        label = 'New Post',
         widget = forms.Textarea(attrs={
             'title': 'New Post',
             'rows': '3',
