@@ -24,9 +24,9 @@
         {% endfor %}
      </ul> {% endcomment %}
 
-    <ul>
+    <div>
         {% for post in page_obj %}
-            <li class="post" id="{{post.id}}">
+            <div class="post" id="{{post.id}}">
                 {% if user_id == post.author.id %}
                     <react class="edit_button_container" data-postid="{{post.id}}"></react>
                 {% endif %}
@@ -38,10 +38,10 @@
                     <react class="like_button_container" data-postid="{{post.id}}"></react>
                 {% endif %}
                 {% comment %} add edit button if user is auth-ed user {% endcomment %}
-            </li>
+            </div>
         {% endfor %}
 
-    </ul>
+    </div>
 
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->

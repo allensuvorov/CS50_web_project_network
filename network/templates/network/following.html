@@ -6,19 +6,19 @@
     
     <br>
     <h2> Following Posts </h2>
-    <ul>
-    {% for post in page_obj %}
-        {% comment %} <li>{{post}}</li> {% endcomment %}
+    <div>
+        {% for post in page_obj %}
+            {% comment %} <li>{{post}}</li> {% endcomment %}
 
-        <li class="post" id="{{post.id}}">
-            <b> {{post.author}} </b>
-            <text class="text"> {{post.text}} </text>
-            <b> {{post.date_time}} </b>
-            <likes class="likes"> Likes: {{post.likes_count}} </likes>
-            <react class="like_button_container" data-postid="{{post.id}}"></react>
-        </li>
-    {% endfor %}
-    </ul>
+            <div class="post" id="{{post.id}}">
+                <b> {{post.author}} </b>
+                <text class="text"> {{post.text}} </text>
+                <b> {{post.date_time}} </b>
+                <likes class="likes"> Likes: {{post.likes_count}} </likes>
+                <react class="like_button_container" data-postid="{{post.id}}"></react>
+            </div>
+        {% endfor %}
+    </div>
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>

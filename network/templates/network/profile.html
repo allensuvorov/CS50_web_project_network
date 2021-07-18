@@ -24,18 +24,18 @@
         </ul>
 
         <h2> User Posts </h2>
-        <ul>
+        <div>
             {% for post in page_obj %}
-                <li class="post" id="{{post.id}}">
+                <div class="post" id="{{post.id}}">
                     <react class="edit_button_container" data-postid="{{post.id}}"></react>
                     <b> {{post.author}} </b>
                     <text class="text"> {{post.text}} </text>
                     <b> {{post.date_time}} </b>
                     <likes class="likes"> Likes: {{post.likes_count}} </likes>
                     <react class="like_button_container" data-postid="{{post.id}}"></react>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% endif %}
     {{message}}
     
