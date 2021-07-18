@@ -14,7 +14,7 @@ class NewPostForm(forms.Form):
     newpost = forms.CharField(
         widget = forms.Textarea(attrs={
             'title': 'New post',
-            'size': '30',
+            'rows': '3',
             'class': 'form-control',
             'placeholder': 'Type New Post Text'
         })
