@@ -147,7 +147,6 @@ def follow_status(request, userid):
 
 def follow(request, userid):
     request.user.following.add(User.objects.get(id=userid))
-    # print ("follow: " + str(User.objects.get(id=userid)))
     return JsonResponse ({'following': True})
 
 def unfollow(request, userid):
