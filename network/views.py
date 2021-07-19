@@ -138,11 +138,11 @@ def profile(request):
     }
     return render(request, "network/profile.html", context)
 
-def follow_status(request, userid):
-    follow_status = False
+def follow_status(request, userid): 
     if User.objects.get(id=userid) in request.user.following.all():
         follow_status = True
-    # print (follow_status)
+    else:
+        follow_status = False
     return JsonResponse ({'following': follow_status})
 
 def follow(request, userid):
