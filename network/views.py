@@ -151,7 +151,6 @@ def follow(request, userid):
 
 def unfollow(request, userid):
     request.user.following.remove(User.objects.get(id=userid))
-    # print ("unfollow: " + str(User.objects.get(id=userid)))
     return JsonResponse ({'following': False})
 
 def following(request):
