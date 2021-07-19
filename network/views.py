@@ -42,7 +42,6 @@ def index(request):
     else:
         context["newpostform"] = NewPostForm()
         context["user_id"] = request.user.id
-        # print("userid is " + str(request.user.id))
     return render(request, "network/index.html", context)
 
 def login_view(request):
@@ -95,14 +94,12 @@ def register(request):
         return render(request, "network/register.html")
 
 def new_post(request):
-    print("\n newpost \n")
-    
     if request.method == "POST":
-        form = NewPostForm(request.POST) # grab form data (user input)
+        
+        # grab form data (user input)
+        form = NewPostForm(request.POST) 
         if form.is_valid():
-            
-            text = form.cleaned_data["newpost"]
-            print("\n " + text + " \n")
+            text = form.cleaned_data["newpost"]            
             
             # add post to DB
             post = Post(
