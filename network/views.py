@@ -154,24 +154,29 @@ def unfollow(request, userid):
     return JsonResponse ({'following': False})
 
 def following(request):
+
     # if user is not authenticated than open index page
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("index"))
+    
     # get users that the user follows
     users = request.user.following.all()
-    print(users)
+    
     # that list will hold all posts that the user follows
     posts = []
-    # that loop takes 
-    for user in users:
-        posts += user.posts.all() # collect all following posts
     
-    # function that gets date and time from a post
+    # loop through those users
+    for user in users:
+        posts += user.posts.all() # and collect all posts the user follows
+    
+    # function that gets date and time from a post (for sorting)
     def datetime(p):
         return p.date_time
 
-    # sort by date and time
+    # sort post list by date and time
     posts.sort(reverse=True, key=datetime)
+
+    #pagination
     paginator=Paginator(posts, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
