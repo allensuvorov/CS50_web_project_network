@@ -192,9 +192,9 @@ def save(request, postid):
     data = json.loads(request.body.decode("utf-8"))
     post = Post.objects.get(id=postid)
 
-    # check it if you are trying to edit another user's post
+    # check if some how you are trying to edit and save another user's post
     if request.user != post.author:
-        print ("error: editing other users posts is not allowed")
+        # than just return the original post text without saving new text
         return JsonResponse ({'text': post.text})
     else:
         post.text = data['text']
