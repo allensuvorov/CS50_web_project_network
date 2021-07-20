@@ -34,7 +34,7 @@ def index(request):
         page_obj = paginator.get_page(page_number)
         context["page_obj"] = page_obj
 
-    # if user is not authenticated than show message and all posts
+    # if user is not authenticated then show message and all posts
     if not request.user.is_authenticated:
         context["message"] = "Welcome to Network, please register or login"
     
@@ -112,7 +112,7 @@ def new_post(request):
 
 def profile(request):
     
-    # if user is not authenticated than open index page
+    # if user is not authenticated then open index page
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("index"))
     
@@ -155,7 +155,7 @@ def unfollow(request, userid):
 
 def following(request):
 
-    # if user is not authenticated than open index page
+    # if user is not authenticated then open index page
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("index"))
     
@@ -184,7 +184,8 @@ def following(request):
     
 # save a post
 def save(request, postid):
-    # if user is not authenticated than open index page
+    
+    # if user is not authenticated then open index page
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("index"))
 
@@ -194,7 +195,7 @@ def save(request, postid):
 
     # check if some how you are trying to edit and save another user's post
     if request.user != post.author:
-        # than just return the original post text without saving new text
+        # then just return the original post text without saving new text
         return JsonResponse ({'text': post.text})
     else:
         post.text = data['text']
@@ -202,10 +203,10 @@ def save(request, postid):
         return JsonResponse ({'text': post.text})
 
 def like_status(request, postid):
-    like_status = False
     if request.user in Post.objects.get(id=postid).likes_users.all():
         like_status = True
-    # print(like_status)
+    else:
+        like_status = False
     return JsonResponse ({'like': like_status})
 
 def like(request, postid):
