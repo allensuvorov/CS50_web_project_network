@@ -210,11 +210,15 @@ def like_status(request, postid):
     return JsonResponse ({'like': like_status})
 
 def like(request, postid):
+
+    # grab the post
     post = Post.objects.get(id=postid)
+
+    # add the current user to likes_users for that post
     post.likes_users.add(request.user)
-    print(post.likes_count)
+
+    # add 1 to likes_count
     post.likes_count += 1
-    print(post.likes_count)
     post.save()
     context = {
         'like': True,
