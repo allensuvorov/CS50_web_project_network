@@ -6,7 +6,6 @@
         <title>{% block title %}Social Network{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'network/styles.css' %}" rel="stylesheet">
-        {% comment %} <script src="{% static 'network/app.js' %}"></script> {% endcomment %}
     </head>
     <body>
 
@@ -47,30 +46,9 @@
             {% endblock %}
         </div>
 
-        {% comment %} <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
-        </div> {% endcomment %}
-
         <nav aria-label="Posts navigation pages">
             <ul class="pagination">
                 {% if page_obj.has_previous %}
-                    {% comment %} <li class="page-item">
-                        <a class="page-link" href="?page=1">&laquo; First</a> 
-                    </li> {% endcomment %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
                             Previous
@@ -101,12 +79,8 @@
                             next
                         </a>
                     </li>
-                    {% comment %} <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    </li> {% endcomment %}
                 {% endif %}
             </ul>
         </nav>
-
     </body>
 </html>
