@@ -10,20 +10,18 @@ class FollowButton extends React.Component {
   }
 
   componentDidMount () {
-    // here will fetch... to get following status from server
-    fetch(`/follow_status/${this.props.userID}`) //sending to the server userID to check if following
+    //sending to the server userID to check if following
+    fetch(`/follow_status/${this.props.userID}`) 
       .then(response=> response.json())
       .then(data=>{
         this.setState({following: data.following});
-        // console.log(data.following);
       });
   }
 
   render() {
     if (this.state.following) {
       
-      // show "unfollow" button 
-      // return 'You are following ' + this.props.userID;
+      // show "unfollow" button
       return f(
         'button',
         { onClick: () => {
@@ -57,7 +55,7 @@ class FollowButton extends React.Component {
 // Find all DOM containers, and render Like buttons into them.
 document.querySelectorAll('.follow_button_container')
   .forEach(domContainer => {
-    // Read the comment ID from a data-* attribute.
+    // Read the user ID from a data-* attribute.
     const userID = parseInt(domContainer.dataset.userid, 10);
     
     ReactDOM.render(
