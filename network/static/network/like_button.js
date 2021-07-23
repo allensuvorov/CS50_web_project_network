@@ -13,13 +13,11 @@ class LikeButton extends React.Component {
     componentDidMount () {
         // get like status from server
         fetch(`/like_status/${this.props.postID}`) //sending to the server postID to check if liked
-          .then(response=> response.json())
-          .then(data=>{
-            this.setState({
-                like: data.like
-            });
-
-            // console.log(data.like);
+            .then(response=> response.json())
+            .then(data=>{
+                this.setState({
+                    like: data.like
+                });
         });
     }
 
@@ -35,14 +33,12 @@ class LikeButton extends React.Component {
                         .then(response=> response.json())
                         .then(data=>{
                             this.setState({ like: data.like });
-                            postLikes.innerHTML = "Likes: " + data.likes_count;
-                            
-                            });
+                            postLikes.innerHTML = "Likes: " + data.likes_count;    
+                        });
                     },
                 },
                 'Unlike'
             );
-            // return 'You liked comment number ' + this.props.postID;
         }
 
         return l(
@@ -56,8 +52,8 @@ class LikeButton extends React.Component {
                     .then(data=>{
                         this.setState({ like: data.like });
                         postLikes.innerHTML = "Likes: " + data.likes_count;
-                        });
-                    },
+                    });
+                },
             },
             'Like'
         );
@@ -66,11 +62,11 @@ class LikeButton extends React.Component {
 
 // Find all DOM containers, and render Like buttons into them.
 document.querySelectorAll('.like_button_container')
-  .forEach(domContainer => {
-    // Read the comment ID from a data-* attribute.
-    const postID = parseInt(domContainer.dataset.postid, 10);
-    ReactDOM.render(
-      l(LikeButton, { postID: postID }),
-      domContainer
-    );
-}); 
+    .forEach(domContainer => {
+        // Read the comment ID from a data-* attribute.
+        const postID = parseInt(domContainer.dataset.postid, 10);
+        ReactDOM.render(
+            l(LikeButton, { postID: postID }),
+            domContainer
+        );
+    }); 
