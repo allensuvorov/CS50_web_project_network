@@ -1,4 +1,10 @@
-Design a Twitter-like social network website for making posts and following users.
+# Project4 - “Network”	(Python, Django, JavaScript, React, SQLite)
+- Description: Design a Twitter-like social network website for making posts and following users.
+- Video overview of the completed project: https://youtu.be/3P4mJYIhaxs
+- Project Spec: https://cs50.harvard.edu/web/2020/projects/4/network/
+- Course: CS50's Web Programming with Python and JavaScript 2021
+
+## Project Spec:
 
 * **New Post:** Users who are signed in should be able to write a new text-based post by filling in text into a text area and then clicking a button to submit the post.
     - The screenshot at the top of this specification shows the “New Post” box at the top of the “All Posts” page. You may choose to do this as well, or you may make the “New Post” feature a separate page.
